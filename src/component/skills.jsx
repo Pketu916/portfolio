@@ -128,16 +128,17 @@ const SkillGrid = () => {
     <section className=" bg-black flex flex-col items-center py-[4vw] relative">
       <div className="custom-container">
         <div className="w-[70vw] flex flex-col items-start gap-[5vw]">
-          <h2 className="text-white font-bold ">grid</h2>
+          <h2 className="text-white font-bold ">SKILL</h2>
 
           <div
             ref={gridRef}
-         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 w-full"
+        //  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 w-full"
+         className="grid grid-cols-3 sm:grid-cols-4 gap-6 w-full"
           >
             {skillImages.map(([alt, src], i) => (
               <div
                 key={i}
-                className="skill-card gap-[1vw] w-[11vw] rounded-[1vw] bg-white shadow-[0_0.5vw_1.5vw_rgba(255,255,0,0.2)] flex flex-col items-center justify-center cursor-grab select-none"
+                className="skill-card gap-[1vw] w-[22vw] md:w-[11vw] rounded-[1vw] bg-white shadow-[0_0.5vw_1.5vw_rgba(255,255,0,0.2)] flex flex-col items-center justify-center cursor-grab select-none"
               >
                 <img
                   src={src}
@@ -151,7 +152,7 @@ const SkillGrid = () => {
 
           <div
             ref={controllerRef}
-            className="w-[5vw] h-[5vw] rounded-full bg-blue-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 cursor-grab shadow-[0_0_1vw_rgba(0,0,0,0.3)] flex items-center justify-center text-white font-bold text-[1vw] select-none"
+            className="w-[10vw] h-[10vw] md:w-[5vw] md:h-[5vw] rounded-full bg-blue-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 cursor-grab shadow-[0_0_1vw_rgba(0,0,0,0.3)] flex items-center justify-center text-white font-bold text-[1vw] select-none"
           >
             Drag me
           </div>

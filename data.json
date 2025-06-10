@@ -1,0 +1,129 @@
+{
+  "name": "Ketu Patel",
+  "title": "Full Stack Developer",
+  "contact": {
+    "phone": "9265650606",
+    "email": "pketu916@gmail.com",
+    "location": "Ahmedabad, Gujarat",
+    "linkedin": "https://www.linkedin.com/in/ketu-patel-b9a104232/",
+    "github": "https://github.com/Pketu916"
+  },
+  "career_objective": "A Motivated Full-Stack Developer with a solid command of the MERN stack - MongoDB, Express.js, React.js, and Node.js - along with proficiency in front-end technologies like HTML, CSS, Bootstrap, Tailwind CSS, and JavaScript(ES6+). Committed to delivering high-performance, scalable web applications with clean, efficient code. Enthusiastic about solving real-world problems through technology and continuously learning to stay updated with modern development practices. Seeking a challenging role where I can contribute to dynamic projects, collaborate with cross-functional teams, and grow as a versatile developer.",
+  "skills": [
+    "JavaScript",
+    "React JS",
+    "Node.js",
+    "Express js",
+    "MongoDB",
+    "TypeScript",
+    "REST API",
+    "GitHub",
+    "Vercel",
+    "HTML",
+    "CSS",
+    "Tailwind CSS",
+    "Linux",
+    "Responsive Design",
+    "Bootstrap"
+  ],
+  "experience": [
+    {
+      "title": "Front End React Developer",
+      "company": "Avesta Technologys, Ahmedabad",
+      "duration": "Jun 2024 - Mar 2025",
+      "summary": [
+        "Frontend Development with React.js, TypeScript, and Tailwind CSS",
+        "Reusable Component Design and UI Consistency",
+        "API Integration and State Management with React Hooks",
+        "Application Performance Optimization and Cross-Browser Compatibility",
+        "Version Control and Team Collaboration using Git"
+      ]
+    },
+    {
+      "title": "React Developer",
+      "company": "Sparks To Idea, Ahmedabad",
+      "duration": "May 2024 - Jun 2024",
+      "summary": [
+        "Responsive Web Development with React.js, HTML, and CSS",
+        "Reusable Component Creation in React",
+        "API Integration and Data Handling",
+        "Performance Optimization and Cross-Browser Compatibility",
+        "UI/UX Issue Resolution and Team Collaboration"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "KSV University",
+      "degree": "B.E. in Information Technology",
+      "duration": "2020 - 2025",
+      "grade": "CGPA: 7.01/10"
+    },
+    {
+      "institution": "GHS Board",
+      "level": "Senior Secondary (XII)",
+      "year": "2020-2021",
+      "percentage": "74%"
+    },
+    {
+      "institution": "GSE Board",
+      "level": "Secondary (X)",
+      "year": "2018-2019",
+      "percentage": "75%"
+    }
+  ],
+  "trainings_certifications": [
+    {
+      "title": "Responsive Web Design",
+      "organization": "FreeCodeCamp",
+      "duration": "Nov 2024 - Jan 2025",
+      "summary": "Learned HTML and CSS to build responsive web pages. Gained skills in Flexbox, Grid, and media queries for mobile-friendly design. Applied accessibility and semantic HTML practices. Completed projects to reinforce concepts and demonstrate practical implementation."
+    },
+    {
+      "title": "Software Testing",
+      "organization": "NPTEL",
+      "duration": "Jan 2024 - Feb 2024",
+      "summary": "Learned software testing fundamentals, including black-box and white-box testing. Gained skills in test case design, debugging, and defect tracking. Applied manual and automated testing techniques. Completed assignments."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Doctor Appointment App",
+      "description": "Full-stack web application for hospital staff to manage patient details, appointments, and records. Includes admin login, patient forms, doctor selection, and secure data handling.",
+      "github": "https://github.com/Pketu916/Doctor-appoinment"
+    },
+    {
+      "title": "Real Estate Website",
+      "description": "Web platform for browsing, searching, and filtering property listings. Includes property details, image galleries, contact forms, and responsive design.",
+      "github": "https://github.com/Pketu916/frontend-practice/tree/main/react-practice/view.com"
+    },
+    {
+      "title": "Figma to Responsive Website Conversion",
+      "description": "Converted Figma designs into responsive, pixel-perfect websites using React.js and Tailwind CSS. Focused on layout, typography, spacing, and responsiveness.",
+      "demo_links": [
+        "https://samarth-e-mobility-xrx4.vercel.app/",
+        "https://task-avesta-ykmv.vercel.app/",
+        "https://task-avesta-o5mg.vercel.app/",
+        "https://task-avesta-bfdh.vercel.app/",
+        "https://frontend-practice-sable.vercel.app/",
+        "https://frontend-practice-v9i6.vercel.app/"
+      ]
+    },
+    {
+      "title": "People Management System",
+      "description": "React-based web app to manage people records with add, edit, delete, and view functionality.",
+      "deployment": "Deployed on Vercel"
+    },
+    {
+      "title": "Banking Simple App",
+      "description": "Banking app with deposit, credit, loan, and FD calculations. Includes account balance tracking and transaction management.",
+      "deployment": "Deployed on Vercel"
+    },
+    {
+      "title": "Travel and Tourism",
+      "description": "Project showcasing travel and tourism information.",
+      "github": "https://github.com/Pketu916/travel-tourism",
+      "demo": "https://pketu916.github.io/travel-tourism/"
+    }
+  ]
+}
