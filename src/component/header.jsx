@@ -4,10 +4,12 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 export const Header = () => {
   const logoRef = useRef(null);
+  const ketuRef = useRef(null);
+  const patelRef = useRef(null);
   const iconsRef = useRef([]);
 
   useEffect(() => {
-    // Continuous pulsing animation on logo
+    // Pulse animation on whole logo
     gsap.to(logoRef.current, {
       scale: 1.05,
       duration: 1.5,
@@ -16,17 +18,19 @@ export const Header = () => {
       yoyo: true,
     });
 
-    // Add hover effect to logo
+    // Hover effects on logo
     const logoEl = logoRef.current;
-    logoEl.addEventListener("mouseenter", () => {
+    const handleLogoEnter = () => {
       gsap.to(logoEl, { scale: 1.2, color: "#00FFFF", duration: 0.3 });
-    });
-    logoEl.addEventListener("mouseleave", () => {
+    };
+    const handleLogoLeave = () => {
       gsap.to(logoEl, { scale: 1.05, color: "#FFFFFF", duration: 0.3 });
-    });
+    };
+    logoEl.addEventListener("mouseenter", handleLogoEnter);
+    logoEl.addEventListener("mouseleave", handleLogoLeave);
 
-    // Simple pulse/fade on "ketu"
-    gsap.to(".ketu", {
+    // Ketu text animation
+    gsap.to(ketuRef.current, {
       opacity: 0.6,
       scale: 1.05,
       yoyo: true,
@@ -35,8 +39,8 @@ export const Header = () => {
       ease: "power1.inOut",
     });
 
-    // Flip animation on "Patel"
-    gsap.to(".patel", {
+    // Patel flip animation
+    gsap.to(patelRef.current, {
       rotateX: 360,
       repeat: -1,
       duration: 3,
@@ -44,27 +48,42 @@ export const Header = () => {
       transformOrigin: "center",
     });
 
-    iconsRef.current.forEach((icon) => {
-      if (!icon) return;
-
-      icon.addEventListener("mouseenter", () => {
+    // Social icon hover animations
+    const listeners = iconsRef.current.map((icon) => {
+      if (!icon) return null;
+      const handleEnter = () =>
         gsap.to(icon, {
           scale: 1.3,
           color: "#00FFFF",
           duration: 0.3,
           ease: "power2.out",
         });
-      });
-
-      icon.addEventListener("mouseleave", () => {
+      const handleLeave = () =>
         gsap.to(icon, {
           scale: 1,
           color: "#AAAAAA",
           duration: 0.3,
           ease: "power2.inOut",
         });
-      });
+
+      icon.addEventListener("mouseenter", handleEnter);
+      icon.addEventListener("mouseleave", handleLeave);
+
+      return { icon, handleEnter, handleLeave };
     });
+
+    // Cleanup all listeners
+    return () => {
+      logoEl.removeEventListener("mouseenter", handleLogoEnter);
+      logoEl.removeEventListener("mouseleave", handleLogoLeave);
+
+      listeners.forEach((l) => {
+        if (l && l.icon) {
+          l.icon.removeEventListener("mouseenter", l.handleEnter);
+          l.icon.removeEventListener("mouseleave", l.handleLeave);
+        }
+      });
+    };
   }, []);
 
   return (
@@ -74,8 +93,12 @@ export const Header = () => {
         ref={logoRef}
         className="text-xl font-bold cursor-pointer transition-all flex gap-1"
       >
-        <span className="ketu text-white">Ketu</span>
-        <span className="patel text-gray-400">Patel</span>
+        <span ref={ketuRef} className="text-white">
+          Ketu
+        </span>
+        <span ref={patelRef} className="text-gray-400">
+          Patel
+        </span>
       </h1>
 
       {/* Socials */}
@@ -85,28 +108,26 @@ export const Header = () => {
         <span>/</span>
         <FaInstagram
           ref={(el) => (iconsRef.current[0] = el)}
-          className="social-icon cursor-pointer"
+          className="cursor-pointer"
         />
         <span>/</span>
         <FaFacebookF
           ref={(el) => (iconsRef.current[1] = el)}
-          className="social-icon cursor-pointer"
+          className="cursor-pointer"
         />
         <span>/</span>
         <FaLinkedinIn
           ref={(el) => (iconsRef.current[2] = el)}
-          className="social-icon cursor-pointer"
+          className="cursor-pointer"
         />
       </div>
 
-      {/* Nav links */}
+      {/* Navigation Links */}
       <nav>
         <ul className="flex gap-5 text-sm text-gray-300">
           <li className="hover:text-white cursor-pointer">About</li>
           <li className="hover:text-white cursor-pointer">Projects</li>
-          <li className="hover:text-white cursor-pointer">
-            Message for Society
-          </li>
+          <li className="hover:text-white cursor-pointer">Message for Society</li>
           <li className="hover:text-white cursor-pointer">Events</li>
         </ul>
       </nav>
