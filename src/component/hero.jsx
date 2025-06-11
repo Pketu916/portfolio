@@ -3,47 +3,47 @@ import { gsap } from "gsap";
 import heroImg from "../assets/ChatGPT Image Jun 10, 2025, 09_54_33 PM (4).jpg";
 
 export const Hero = () => {
-  const headingRef = useRef();
-  const paraRef = useRef();
+  // const headingRef = useRef();
+  // const paraRef = useRef();
 
-  useEffect(() => {
-    // Heading animation
-    const el = headingRef.current;
-    const text = el.innerText;
-    el.innerHTML = text
-      .split("")
-      .map((char) => `<span class="char inline-block">${char}</span>`)
-      .join("");
+  // useEffect(() => {
+  //   // Heading animation
+  //   const el = headingRef.current;
+  //   const text = el.innerText;
+  //   el.innerHTML = text
+  //     .split("")
+  //     .map((char) => `<span class="char inline-block">${char}</span>`)
+  //     .join("");
 
-    gsap.fromTo(
-      ".char",
-      { scale: 0, rotation: 180, opacity: 0 },
-      {
-        scale: 1,
-        rotation: 0,
-        opacity: 1,
-        stagger: 0.05,
-        duration: 0.6,
-        repeat: -1,
-        repeatDelay: 2,
-        yoyo: true,
-        ease: "back.out(1.7)",
-      }
-    );
+  //   gsap.fromTo(
+  //     ".char",
+  //     { scale: 0, rotation: 180, opacity: 0 },
+  //     {
+  //       scale: 1,
+  //       rotation: 0,
+  //       opacity: 1,
+  //       stagger: 0.05,
+  //       duration: 0.6,
+  //       repeat: -1,
+  //       repeatDelay: 2,
+  //       yoyo: true,
+  //       ease: "back.out(1.7)",
+  //     }
+  //   );
 
-    // Paragraph animation
-    gsap.fromTo(
-      paraRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        delay: 1,
-        duration: 1,
-        ease: "power3.out",
-      }
-    );
-  }, []);
+  //   // Paragraph animation
+  //   gsap.fromTo(
+  //     paraRef.current,
+  //     { y: 50, opacity: 0 },
+  //     {
+  //       y: 0,
+  //       opacity: 1,
+  //       delay: 1,
+  //       duration: 1,
+  //       ease: "power3.out",
+  //     }
+  //   );
+  // }, []);
 
   return (
     <section id="hero" className="h-[100vh] w-[100dvh] sm:w-[100vw]">
