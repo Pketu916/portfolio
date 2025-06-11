@@ -3,8 +3,8 @@ import { gsap } from "gsap";
 import heroImg from "../assets/ChatGPT Image Jun 10, 2025, 09_54_33 PM (4).jpg";
 
 export const Hero = () => {
-  // const headingRef = useRef();
-  // const paraRef = useRef();
+  const headingRef = useRef();
+  const paraRef = useRef();
 
   // useEffect(() => {
   //   // Heading animation
