@@ -24,7 +24,7 @@ export const Hero = () => {
         opacity: 1,
         stagger: 0.05,
         duration: 0.6,
-        repeat: -1,
+        repeat: 0,
         repeatDelay: 2,
         yoyo: true,
         ease: "back.out(1.7)",
