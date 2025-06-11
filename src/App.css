@@ -30,6 +30,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overscroll-behavior-y: none !important;
+}
+
 /* ===============================
    Typography Classes
 ================================= */
