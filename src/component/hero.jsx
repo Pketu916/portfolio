@@ -24,7 +24,7 @@ export const Hero = () => {
         opacity: 1,
         stagger: 0.05,
         duration: 0.6,
-        repeat: 0,
+        repeat: -1,
         repeatDelay: 2,
         yoyo: true,
         ease: "back.out(1.7)",
@@ -46,7 +46,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="h-[100vh] w-[100vw]">
+    <section id="hero" className="h-[100vh] w-[100dvh] sm:w-[100vw]">
       <div className="h-full w-full relative ">
         <div className="hero-text flex flex-col items-start gap-[1vw]">
           <h1 ref={headingRef}>Hello, I'm Ketu</h1>

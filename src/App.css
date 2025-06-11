@@ -230,3 +230,9 @@ body::-webkit-scrollbar {
     --container-width: 90vw;
   }
 }
+
+@media (max-width:640px) {
+  #hero {
+    height: 100dvh;
+  }
+}
