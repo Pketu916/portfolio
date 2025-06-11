@@ -46,7 +46,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="h-[90vh] w-[100vw] relative">
+    <section id="hero" className="sm:h-[100vh] h-[100dvh] w-[100vw] relative">
       <div className="h-full w-full relative ">
         <div className="hero-text flex flex-col items-start gap-[1vw]">
           <h1 ref={headingRef}>Hello, I'm Ketu</h1>
