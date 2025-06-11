@@ -8,7 +8,7 @@ import SkillGrid from "./component/skills";
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {/* <Hero /> */}
       <Marquee />
       <ProjectSection />
