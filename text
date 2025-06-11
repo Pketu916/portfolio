@@ -1,0 +1,66 @@
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import WorkSampleCard from "./WorkSampleCard";
+import { Navigation, Pagination, Mousewheel, Keyboard, Scrollbar } from "swiper/modules"; // Import required modules
+
+import heroImg1 from "../assets/ChatGPT Image Jun 10, 2025, 09_54_33 PM (4).jpg"; // Correct image import
+import heroImg2 from "../assets//ChatGPT Image Jun 10, 2025, 09_54_33 PM (4)-Photoroom.png"; // Correct image import
+
+import "./styles.css";
+
+// Sample Project Data
+const projects = [
+  {
+    name: "Doctor-appointment",
+    description: "Developed a full-stack Doctor Appointment web application...",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API"],
+    github: "https://github.com/Pketu916/Doctor-appoinment",
+    liveDemo: "https://samarth-e-mobility-xrx4.vercel.app/",
+    sourceCode: "https://github.com/Pketu916/Doctor-appoinment",
+    imageUrl: heroImg1, // Replace with your image import path
+  },
+  {
+    name: "Real Estate Website",
+    description: "Developed a user-friendly Real Estate web platform...",
+    technologies: ["React.js", "Node.js", "MongoDB", "Tailwind CSS"],
+    github:
+      "https://github.com/Pketu916/frontend-practice/tree/main/react-practice/view.com",
+    liveDemo: "https://frontend-practice-sable.vercel.app/",
+    imageUrl: heroImg2, // Replace with your image import path
+  },
+];
+
+export const WorkSample = () => {
+  return (
+    <div className="work-sample-container">
+      <Swiper
+        cssMode={true}
+        navigation={true}
+        loop={true}
+        pagination={true}
+        mousewheel={true}
+        keyboard={true}
+        direction="vertical" // Set the direction to 'vertical'
+        modules={[Navigation, Pagination, Mousewheel, Keyboard, Scrollbar]} // Add the necessary modules
+        className="mySwiper"
+      >
+        {projects.map((project, index) => (
+          <SwiperSlide key={index} className="slide">
+            {/* Use an img tag to display the background image */}
+            <img
+              src={project.imageUrl}
+              alt={project.name}
+              className="slide-image"
+            />
+            <WorkSampleCard project={project} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
+
+export default WorkSample;

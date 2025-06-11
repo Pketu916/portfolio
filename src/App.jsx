@@ -3,8 +3,8 @@ import "./App.css";
 import Header from "./component/header";
 import { Hero } from "./component/hero";
 // import Marquee from "./component/marquee";
-import ProjectSection from "./component/ProjectSection";
 import SkillGrid from "./component/skills";
+import WorkSample from "./component/WorkSample";
 
 function App() {
   return (
@@ -12,7 +12,8 @@ function App() {
       <Header />
       <Hero />
       {/* <Marquee /> */}
-      <ProjectSection />
+      {/* <ProjectSection /> */}
+      <WorkSample />
       <SkillGrid />
     </>
   );
