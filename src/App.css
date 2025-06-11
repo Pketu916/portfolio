@@ -159,12 +159,6 @@ body::-webkit-scrollbar {
 
 /*hero section  */
 
-#hero {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-}
-
 #hero figure img {
   height: 100%;
   width: 100%;
@@ -231,8 +225,8 @@ body::-webkit-scrollbar {
   }
 }
 
-@media (max-width:640px) {
+/* @media (max-width:640px) {
   #hero {
     height: 100dvh;
   }
-}
+} */
