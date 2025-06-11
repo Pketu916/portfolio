@@ -9,9 +9,13 @@ function App() {
   return (
     <>
       <Header />
-      <Hero />
+      {/* <Hero /> */}
       <Marquee />
-      {/* <ProjectSection /> */}
+      <ProjectSection />
+      <ProjectSection />
+      <ProjectSection />
+      <ProjectSection />
+      <ProjectSection />
       <SkillGrid />
     </>
   );
