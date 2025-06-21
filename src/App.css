@@ -30,7 +30,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   overscroll-behavior-y: none !important;
 }
 
@@ -66,7 +67,7 @@ html, body {
   line-height: 120%;
   letter-spacing: var(--letter-spacing);
   font-family: var(--font-family);
-  color: var(--text-color);
+  /* color: var(--text-color); */
 }
 
 
@@ -92,49 +93,49 @@ button {
 /* ===============================
    Semantic Elements Styling
 ================================= */
-h1 {
+.h1 {
   font-size: var(--font-h1);
   font-weight: 600;
   text-wrap: nowrap;
 }
 
-h2 {
+.h2 {
   font-size: var(--font-h2);
 }
 
-h3 {
+.h3 {
   font-size: var(--font-h3);
 }
 
-h4 {
+.h4 {
   font-size: var(--font-h4);
 }
 
-h5 {
+.h5 {
   font-size: var(--font-h5);
 }
 
-h6 {
+.h6 {
   font-size: var(--font-h6);
 }
 
-p {
+.p {
   font-size: var(--font-p);
 }
 
-small {
+.small {
   font-size: var(--font-small);
 }
 
 /* Apply shared typography rules */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-small {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.p,
+.small {
   font-family: var(--font-family);
   /* color: var(--text-color); */
   line-height: 120%;
@@ -161,43 +162,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/*hero section  */
-
-#hero figure img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-#hero figure {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-#hero .hero-text {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#navbar {
-  /* backdrop-filter: blur(10px); */
-  /* -webkit-backdrop-filter: blur(10px); */
-  color: white;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 5vw;
-  transition: all 0.5s ease;
-  z-index: 20;
-  top: 0;
-  display: flex;
-  align-items: center;
-}
 
 
 @media (max-width:768px) {
@@ -234,4 +198,3 @@ body::-webkit-scrollbar {
     height: 100dvh;
   }
 } */
-
