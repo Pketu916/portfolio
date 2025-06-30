@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaLinkedinIn,FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   const iconsRef = useRef([]);
@@ -77,7 +77,7 @@ const Footer = () => {
             I'd love to hear from you. Feel free to reach out via email!
           </p>
           <a
-            href="mailto:contact@ketupatel.com?subject=Contact from Website"
+            href="mailto:pketu916@gmail.com?subject=Contact from Website"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 px-6 py-2 rounded-full font-bold text-white transition-all"
@@ -90,19 +90,38 @@ const Footer = () => {
       {/* Social Icons and Copyright */}
       <div className="mt-14 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex gap-6 text-gray-400 text-xl">
-          <FaInstagram
-            ref={(el) => (iconsRef.current[0] = el)}
-            className="cursor-pointer"
-          />
-          <FaFacebookF
-            ref={(el) => (iconsRef.current[1] = el)}
-            className="cursor-pointer"
-          />
-          <FaLinkedinIn
-            ref={(el) => (iconsRef.current[2] = el)}
-            className="cursor-pointer"
-          />
+          <a
+            href="https://www.instagram.com/k2__patel_/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram
+              ref={(el) => (iconsRef.current[0] = el)}
+              className="cursor-pointer hover:text-pink-500 transition"
+            />
+          </a>
+
+          {/* <FaFacebookF
+    ref={(el) => (iconsRef.current[1] = el)}
+    className="cursor-pointer"
+  /> */}
+
+          <a
+            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedinIn
+              ref={(el) => (iconsRef.current[2] = el)}
+              className="cursor-pointer hover:text-blue-500 transition"
+            />
+          </a>
+
+          <a href="mailto:pketu916@gmail.com">
+            <FaEnvelope className="cursor-pointer hover:text-cyan-500 transition" />
+          </a>
         </div>
+
         <p className="text-sm text-gray-500 text-center md:text-right">
           © {new Date().getFullYear()} Ketu Patel. All rights reserved.
         </p>

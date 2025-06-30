@@ -12,6 +12,7 @@ import Services from "./component/Services";
 import SkillGrid from "./component/skills";
 import StickyScrollWidget from "./component/StickyScrollWidget";
 import WorkSample from "./component/WorkSample";
+import CustomCursor from "./component/CustomCursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,6 +47,7 @@ function App() {
       <Benefits />
       <Services />
       <Footer />
+      <CustomCursor />
     </>
   );
 }

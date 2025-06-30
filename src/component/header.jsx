@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const Header = () => {
   const logoRef = useRef(null);
@@ -9,9 +13,11 @@ const Header = () => {
   const navLinksRef = useRef([]);
   const menuRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("Home");
+
+  const navItems = ["Home", "Projects", "Toolbox", "Services"];
 
   useEffect(() => {
-    // Logo text pulse
     gsap.to(logoRef.current, {
       scale: 1.05,
       repeat: -1,
@@ -20,7 +26,6 @@ const Header = () => {
       ease: "sine.inOut",
     });
 
-    // 3D animated rounded text for 'Patel'
     gsap.to(patelRef.current, {
       rotateY: 360,
       borderRadius: "50%",
@@ -30,14 +35,30 @@ const Header = () => {
       transformOrigin: "center",
     });
 
-    // Socials hover
     socialsRef.current.forEach((icon) => {
-      const enter = () => gsap.to(icon, { scale: 1.3, color: "#00FFFF", duration: 0.3 });
-      const leave = () => gsap.to(icon, { scale: 1, color: "#AAAAAA", duration: 0.3 });
-      icon.addEventListener("mouseenter", enter);
-      icon.addEventListener("mouseleave", leave);
+      const enter = () =>
+        gsap.to(icon, { scale: 1.3, color: "#00FFFF", duration: 0.3 });
+      const leave = () =>
+        gsap.to(icon, { scale: 1, color: "#AAAAAA", duration: 0.3 });
+      icon?.addEventListener("mouseenter", enter);
+      icon?.addEventListener("mouseleave", leave);
     });
   }, []);
+
+  const scrollToSection = (id) => {
+    const sectionId = id.toLowerCase() === "home" ? "hero" : id.toLowerCase();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setActive(id);
+      setMenuOpen(false);
+      gsap.to(menuRef.current, {
+        x: "100%",
+        duration: 0.5,
+        ease: "power2.inOut",
+      });
+    }
+  };
 
   const handleMenuToggle = () => {
     setMenuOpen((prev) => !prev);
@@ -51,6 +72,7 @@ const Header = () => {
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md text-white px-[5vw] py-4 flex justify-between items-center">
+        
         {/* Logo */}
         <div ref={logoRef} className="flex items-center gap-2 cursor-pointer select-none">
           <span className="text-xl font-bold">Ketu</span>
@@ -59,26 +81,33 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8 text-sm uppercase">
-          {["About", "Projects", "Message", "Events"].map((text, i) => (
+          {navItems.map((text, i) => (
             <span
               key={i}
               ref={(el) => (navLinksRef.current[i] = el)}
-              className="hover:text-cyan-400 relative cursor-pointer transition"
+              className={`relative cursor-pointer transition pb-1 ${
+                active === text
+                  ? "text-cyan-400 border-b-2 border-cyan-400"
+                  : "text-gray-300 hover:text-cyan-300"
+              }`}
+              onClick={() => scrollToSection(text)}
             >
               {text}
-              <span className="block w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
             </span>
           ))}
         </nav>
 
-        {/* Socials and Email Desktop */}
+        {/* Socials */}
         <div className="hidden md:flex gap-3 text-gray-400 items-center">
           <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
             <FaEnvelope className="cursor-pointer" />
           </a>
-          <FaInstagram ref={(el) => (socialsRef.current[0] = el)} className="cursor-pointer" />
-          <FaFacebookF ref={(el) => (socialsRef.current[1] = el)} className="cursor-pointer" />
-          <FaLinkedinIn ref={(el) => (socialsRef.current[2] = el)} className="cursor-pointer" />
+          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
+            <FaInstagram ref={(el) => (socialsRef.current[0] = el)} className="cursor-pointer" />
+          </a>
+          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedinIn ref={(el) => (socialsRef.current[1] = el)} className="cursor-pointer" />
+          </a>
         </div>
 
         {/* Mobile Icon */}
@@ -87,15 +116,18 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Full Screen Menu */}
+      {/* Full Screen Mobile Menu */}
       <div
         ref={menuRef}
         className="fixed top-0 right-0 w-full h-screen bg-black text-white z-40 flex flex-col justify-center items-center text-3xl gap-10 translate-x-full"
       >
-        {["About", "Projects", "Message", "Events"].map((item, i) => (
+        {navItems.map((item, i) => (
           <span
             key={i}
-            className="hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer"
+            className={`hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer ${
+              active === item ? "text-cyan-400" : "text-white"
+            }`}
+            onClick={() => scrollToSection(item)}
           >
             {item}
           </span>
@@ -104,9 +136,12 @@ const Header = () => {
           <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
             <FaEnvelope className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
-          <FaInstagram className="cursor-pointer text-gray-400 hover:text-white" />
-          <FaFacebookF className="cursor-pointer text-gray-400 hover:text-white" />
-          <FaLinkedinIn className="cursor-pointer text-gray-400 hover:text-white" />
+          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
+            <FaInstagram className="cursor-pointer text-gray-400 hover:text-white" />
+          </a>
+          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedinIn className="cursor-pointer text-gray-400 hover:text-white" />
+          </a>
         </div>
       </div>
     </>

@@ -2,41 +2,53 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import heroImg1 from "../assets/ChatGPT Image Jun 10, 2025, 09_54_33 PM (4).jpg";
-import heroImg2 from "../assets/ChatGPT Image Jun 10, 2025, 09_54_33 PM (4)-Photoroom.png";
+import WorkSampleImg from "../assets/AoVi0HG0bEq.png";
+import WorkSample1 from "../assets/AoVi0HG0bEq (1).png";
+import WorkSample2 from "../assets/AoVi0HG0bEq (2).png";
+import WorkSample3 from "../assets/AoVi0HG0bEq (3).png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projectData = [
   {
-    id: "doctor",
-    name: "Doctor Appointment",
+    id: "1",
+    name: "Ever X",
     description:
-      "A full-stack appointment booking platform with login/signup, patient management, responsive layout, and backend with REST APIs.",
+      "Full-stack appointment booking platform with secure login/signup, patient record management, responsive dashboard, and REST API backend.",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
-    github: "https://github.com/Pketu916/Doctor-appoinment",
-    liveDemo: "https://samarth-e-mobility-xrx4.vercel.app/",
-    imageUrl: heroImg1,
+    github: "https://github.com/Pketu916/appsRow/tree/main/everX",
+    liveDemo: "https://everx.vercel.app/",
+    imageUrl: WorkSampleImg,
   },
   {
-    id: "urban",
-    name: "Urban Vogue",
+    id: "2",
+    name: "Nestora",
     description:
-      "A modern fashion brand website with animated hero section, product galleries, and stylish layout.",
-    technologies: ["HTML", "GSAP", "CSS", "JavaScript"],
-    github: "#",
-    liveDemo: "#",
-    imageUrl: heroImg2,
+      "Modern fashion landing page with responsive design, animated sections, smooth scroll, and clean layout using Tailwind CSS.",
+    technologies: ["HTML", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/Pketu916/appsRow/tree/main/nestora",
+    liveDemo: "https://apps-row.vercel.app/",
+    imageUrl: WorkSample1,
   },
   {
-    id: "stylex",
-    name: "StyleX E-Commerce",
+    id: "3",
+    name: "Samarth E-Mobility",
     description:
-      "An animated e-commerce layout using Framer Motion, optimized for high-end clothing brands.",
-    technologies: ["React.js", "Tailwind", "Framer Motion"],
-    github: "#",
-    liveDemo: "#",
-    imageUrl: heroImg2,
+      "Next-gen EV company website with animated hero sections, Framer Motion effects, and fully responsive design.",
+    technologies: ["React.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
+    github: "https://github.com/Pketu916/samarth-e-mobility",
+    liveDemo: "https://samarth-e-mobility-xrx4.vercel.app//",
+    imageUrl: WorkSample2,
+  },
+  {
+    id: "4",
+    name: "Dashify",
+    description:
+      "SaaS dashboard UI with React, reusable components, animated transitions, and a clean, responsive layout.",
+    technologies: ["React.js", "Tailwind CSS", "TypeScript"],
+    github: "https://github.com/Pketu916/appsRow/tree/main/dashify",
+    liveDemo: "https://apps-row-ioxu.vercel.app//",
+    imageUrl: WorkSample3,
   },
 ];
 
@@ -105,6 +117,7 @@ const WorkSample = () => {
 
   return (
     <div
+    id="projects"
       ref={containerRef}
       className="bg-gradient-to-b from-black via-[#0d0d0d] to-black text-white px-6 md:px-24 py-24"
     >

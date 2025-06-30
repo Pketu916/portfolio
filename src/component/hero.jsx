@@ -13,7 +13,6 @@ export const Hero = () => {
   const heroContentRef = useRef();
 
   useEffect(() => {
-    // Split heading into span characters
     const el = headingRef.current;
     const text = el.innerText;
     el.innerHTML = text
@@ -21,7 +20,6 @@ export const Hero = () => {
       .map((char) => `<span class="char inline-block">${char}</span>`)
       .join("");
 
-    // Animate heading characters
     gsap.fromTo(
       ".char",
       { scale: 0, rotation: 180, opacity: 0 },
@@ -38,7 +36,6 @@ export const Hero = () => {
       }
     );
 
-    // Paragraph animation
     gsap.fromTo(
       paraRef.current,
       { y: 50, opacity: 0 },
@@ -51,7 +48,6 @@ export const Hero = () => {
       }
     );
 
-    // Rotating text
     const texts = ["Creative Thinker", "Problem Solver", "UI Enthusiast", "Web Craftsman"];
     let i = 0;
     const rotate = () => {
@@ -75,7 +71,6 @@ export const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Background parallax effect
   useEffect(() => {
     gsap.to(bgRef.current, {
       y: -100,
@@ -117,18 +112,30 @@ export const Hero = () => {
       {/* Hero Text Content */}
       <div
         ref={heroContentRef}
-        className="absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center px-4 flex flex-col items-center gap-4"
+         className="absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center px-4 flex flex-col items-center gap-4 w-[90%]"
       >
-        <h1 ref={headingRef} className="text-4xl sm:text-6xl font-bold tracking-wide">
+        <h1
+          ref={headingRef}
+          className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-wide text-white leading-tight"
+        >
           Hello, I'm Ketu
         </h1>
-        <p ref={paraRef} className="text-lg sm:text-xl text-white/80 max-w-xl">
-          a Frontend Developer crafting smooth digital experiences
+
+        <p
+          ref={paraRef}
+          className="text-base sm:text-lg md:text-xl text-white/80 max-w-md mt-2"
+        >
+          A Frontend Developer crafting smooth digital experiences
         </p>
-        <p className="text-cyan-400 text-xl font-medium h-[1.5em]" ref={rotatingTextRef}></p>
+
+        <p
+          className="text-cyan-400 text-lg sm:text-xl md:text-2xl font-medium h-[1.5em] mt-2"
+          ref={rotatingTextRef}
+        ></p>
+
         <a
-          href="mailto:contact@ketupatel.com?subject=Let's%20Work%20Together"
-          className="mt-4 px-6 py-2 bg-cyan-500 hover:bg-cyan-600 transition rounded-full font-semibold"
+          href="mailto:pketu916@gmail.com?subject=Let's%20Work%20Together"
+          className="mt-6 px-6 py-2 text-base sm:text-lg bg-cyan-500 hover:bg-cyan-600 transition rounded-full font-semibold"
         >
           Send Email
         </a>
