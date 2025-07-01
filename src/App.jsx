@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <Header />
-      <StickyScrollWidget />
+      {/* <StickyScrollWidget /> */}
       <Hero />
       <WorkSample />
       <SkillGrid />

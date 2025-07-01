@@ -198,3 +198,14 @@ body::-webkit-scrollbar {
     height: 100dvh;
   }
 } */
+
+#hero {
+  background-image: url(/public/hero-bg.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body{
+  cursor: none;
+}

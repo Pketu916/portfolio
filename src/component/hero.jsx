@@ -1,19 +1,21 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import heroImg from "../assets/ChatGPT Image Jun 10, 2025, 09_54_33 PM (4).jpg";
+import heroImg from "../assets/hero-bg.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const Hero = () => {
-  const headingRef = useRef();
-  const paraRef = useRef();
-  const rotatingTextRef = useRef();
-  const bgRef = useRef();
-  const heroContentRef = useRef();
+  const headingRef = useRef(null);
+  const paraRef = useRef(null);
+  const rotatingTextRef = useRef(null);
+  const bgRef = useRef(null);
+  const heroContentRef = useRef(null);
 
   useEffect(() => {
     const el = headingRef.current;
+    if (!el) return;
+
     const text = el.innerText;
     el.innerHTML = text
       .split("")
@@ -51,6 +53,7 @@ export const Hero = () => {
     const texts = ["Creative Thinker", "Problem Solver", "UI Enthusiast", "Web Craftsman"];
     let i = 0;
     const rotate = () => {
+      if (!rotatingTextRef.current) return;
       gsap.to(rotatingTextRef.current, {
         opacity: 0,
         y: -20,
@@ -72,35 +75,39 @@ export const Hero = () => {
   }, []);
 
   useEffect(() => {
-    gsap.to(bgRef.current, {
-      y: -100,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    gsap.fromTo(
-      heroContentRef.current,
-      { opacity: 1 },
-      {
-        opacity: 0,
+    if (bgRef.current) {
+      gsap.to(bgRef.current, {
+        y: -100,
+        ease: "none",
         scrollTrigger: {
           trigger: "#hero",
           start: "top top",
-          end: "center top",
+          end: "bottom top",
           scrub: true,
         },
-      }
-    );
+      });
+    }
+
+    if (heroContentRef.current) {
+      gsap.fromTo(
+        heroContentRef.current,
+        { opacity: 1 },
+        {
+          opacity: 0,
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "top top",
+            end: "center top",
+            scrub: true,
+          },
+        }
+      );
+    }
   }, []);
 
   return (
     <section id="hero" className="relative w-full h-[100dvh] overflow-hidden">
-      {/* Background */}
+      {/* Optional Background */}
       <figure ref={bgRef} className="absolute inset-0 -z-10">
         <img
           src={heroImg}
@@ -109,10 +116,10 @@ export const Hero = () => {
         />
       </figure>
 
-      {/* Hero Text Content */}
+      {/* Hero Content */}
       <div
         ref={heroContentRef}
-         className="absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center px-4 flex flex-col items-center gap-4 w-[90%]"
+        className="absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center px-4 flex flex-col items-center gap-4 w-[90%]"
       >
         <h1
           ref={headingRef}
