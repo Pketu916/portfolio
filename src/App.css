@@ -206,6 +206,6 @@ body::-webkit-scrollbar {
   background-repeat: no-repeat;
   background-position: center;
 }
-body{
+html{
   cursor: none;
 }

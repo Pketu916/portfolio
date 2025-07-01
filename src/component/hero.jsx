@@ -108,13 +108,13 @@ export const Hero = () => {
   return (
     <section id="hero" className="relative w-full h-[100dvh] overflow-hidden">
       {/* Optional Background */}
-      <figure ref={bgRef} className="absolute inset-0 -z-10">
+      {/* <figure ref={bgRef} className="absolute inset-0 -z-10">
         <img
           src={heroImg}
           alt="Hero Background"
           className="w-full h-full object-cover"
         />
-      </figure>
+      </figure> */}
 
       {/* Hero Content */}
       <div

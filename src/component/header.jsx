@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaInstagram, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+// import { useLenis } from "./LenisContext.jsx"; // Assuming you use LenisContext
+import { useLenis } from "../LenisContext.jsx";
 
 const Header = () => {
   const logoRef = useRef(null);
@@ -14,6 +12,7 @@ const Header = () => {
   const menuRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("Home");
+  const lenis = useLenis();
 
   const navItems = ["Home", "Projects", "Toolbox", "Services"];
 
@@ -49,7 +48,11 @@ const Header = () => {
     const sectionId = id.toLowerCase() === "home" ? "hero" : id.toLowerCase();
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      if (lenis) {
+        lenis.scrollTo(section);
+      } else {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
       setActive(id);
       setMenuOpen(false);
       gsap.to(menuRef.current, {
@@ -74,9 +77,15 @@ const Header = () => {
       <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md text-white px-[5vw] py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <div ref={logoRef} className="flex items-center gap-2 cursor-pointer select-none">
+        <div
+          ref={logoRef}
+          className="flex items-center gap-2 cursor-pointer select-none"
+          onClick={() => scrollToSection("home")}
+        >
           <span className="text-xl font-bold">Ketu</span>
-          <span ref={patelRef} className="text-cyan-400 font-bold">Patel</span>
+          <span ref={patelRef} className="text-cyan-400 font-bold">
+            Patel
+          </span>
         </div>
 
         {/* Desktop Nav */}
@@ -111,8 +120,52 @@ const Header = () => {
         </div>
 
         {/* Mobile Icon */}
-        <div className="md:hidden text-2xl cursor-pointer" onClick={handleMenuToggle}>
-          {menuOpen ? "✕" : "☰"}
+        <div
+          className="md:hidden w-8 h-8 relative cursor-pointer flex items-center justify-center"
+          onClick={handleMenuToggle}
+        >
+          <svg
+            className="w-6 h-6 stroke-white"
+            viewBox="0 0 24 24"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line
+              x1="3"
+              y1="6"
+              x2="21"
+              y2="6"
+              className="transition-transform origin-center"
+              style={{
+                transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "rotate(0) translate(0, 0)",
+                transition: "transform 0.3s ease",
+              }}
+            />
+            <line
+              x1="3"
+              y1="12"
+              x2="21"
+              y2="12"
+              className="transition-opacity"
+              style={{
+                opacity: menuOpen ? 0 : 1,
+                transition: "opacity 0.3s ease",
+              }}
+            />
+            <line
+              x1="3"
+              y1="18"
+              x2="21"
+              y2="18"
+              className="transition-transform origin-center"
+              style={{
+                transform: menuOpen ? "rotate(-45deg) translate(0, 0)" : "rotate(0) translate(0, 0)",
+                transition: "transform 0.3s ease",
+              }}
+            />
+          </svg>
         </div>
       </header>
 
