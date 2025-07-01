@@ -127,7 +127,7 @@ const Header = () => {
               y2="6"
               className="transition-transform origin-center"
               style={{
-                transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "rotate(0) translate(0, 0)",
+                transform: menuOpen ? "rotate(45deg) translate(0px, 6px)" : "rotate(0) translate(0, 0)",
                 transition: "transform 0.3s ease",
               }}
             />
@@ -149,7 +149,7 @@ const Header = () => {
               y2="18"
               className="transition-transform origin-center"
               style={{
-                transform: menuOpen ? "rotate(-45deg) translate(0px, 0px)" : "rotate(0) translate(0, 0)",
+                transform: menuOpen ? "rotate(-45deg) translate(0px, -6px)" : "rotate(0) translate(0, 0)",
                 transition: "transform 0.3s ease",
               }}
             />
