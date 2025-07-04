@@ -26,16 +26,16 @@ const LiquidCursor = () => {
       ref={cursorRef}
       className="fixed top-0 left-0 z-[9999] pointer-events-none"
       style={{
-        width: "20px",
-        height: "20px",
+        width: "40px",
+        height: "40px",
         transform: "translate(-50%, -50%)",
-        backdropFilter: "blur(6px)",
-        WebkitBackdropFilter: "blur(6px)",
-        background: "rgba(255, 255, 255, 0.05)",
-        border: "1px solid rgba(255, 255, 255, 0.15)",
+        backdropFilter: "blur(1px)",
+        WebkitBackdropFilter: "blur(1px)",
+        background: "rgba(255, 255, 255, 0)",
+        border: "1px solid rgba(255, 255, 255, 0.5)",
         borderRadius: "50%",
         boxShadow: "0 0 6px rgba(0, 255, 255, 0.3)",
-        transition: "all 0.2s ease",
+        transition: "all 0.1s ease",
         filter: "drop-shadow(0 0 4px rgba(0, 255, 255, 0.2))",
       }}
     ></div>

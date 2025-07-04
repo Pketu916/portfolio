@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { FaInstagram, FaFacebookF, FaLinkedinIn,FaEnvelope } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const Footer = () => {
   const iconsRef = useRef([]);
@@ -55,17 +60,41 @@ const Footer = () => {
         <div>
           <h3 className="text-2xl font-semibold mb-4">Quick Links</h3>
           <ul className="text-gray-300 space-y-2">
-            <li className="hover:text-white transition-all cursor-pointer">
-              About
+            <li>
+              <a
+                href="#hero"
+                id="home-link"
+                className="hover:text-white transition-all cursor-pointer"
+              >
+                Home
+              </a>
             </li>
-            <li className="hover:text-white transition-all cursor-pointer">
-              Projects
+            <li>
+              <a
+                href="#projects"
+                id="projects-link"
+                className="hover:text-white transition-all cursor-pointer"
+              >
+                Projects
+              </a>
             </li>
-            <li className="hover:text-white transition-all cursor-pointer">
-              Events
+            <li>
+              <a
+                href="#toolbox"
+                id="toolbox-link"
+                className="hover:text-white transition-all cursor-pointer"
+              >
+                Toolbox
+              </a>
             </li>
-            <li className="hover:text-white transition-all cursor-pointer">
-              Contact
+            <li>
+              <a
+                href="#services"
+                id="services-link"
+                className="hover:text-white transition-all cursor-pointer"
+              >
+                Services
+              </a>
             </li>
           </ul>
         </div>

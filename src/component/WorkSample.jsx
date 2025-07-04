@@ -27,7 +27,7 @@ const projectData = [
       "Modern fashion landing page with responsive design, animated sections, smooth scroll, and clean layout using Tailwind CSS.",
     technologies: ["HTML", "Tailwind CSS", "JavaScript"],
     github: "https://github.com/Pketu916/appsRow/tree/main/nestora",
-    liveDemo: "https://apps-row.vercel.app/",
+    liveDemo: "https://nestora-three.vercel.app/",
     imageUrl: WorkSample1,
   },
   {
