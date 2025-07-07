@@ -12,6 +12,7 @@ import Services from "./component/Services";
 import SkillGrid from "./component/skills";
 import WorkSample from "./component/WorkSample";
 import CustomCursor from "./component/CustomCursor";
+import WorkExperience from "./component/WorkExperience";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,6 +55,7 @@ function App() {
       <Hero />
       <WorkSample />
       <SkillGrid />
+      <WorkExperience/>
       <Benefits />
       <Services />
       <Footer />

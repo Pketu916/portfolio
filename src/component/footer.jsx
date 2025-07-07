@@ -87,6 +87,15 @@ const Footer = () => {
                 Toolbox
               </a>
             </li>
+             <li>
+              <a
+                href="#experience"
+                id="#experience"
+                className="hover:text-white transition-all cursor-pointer"
+              >
+                Experience
+              </a>
+            </li>
             <li>
               <a
                 href="#services"

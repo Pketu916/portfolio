@@ -11,7 +11,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("Home");
 
-  const navItems = ["Home", "Projects", "Toolbox", "Services"];
+  const navItems = ["Home", "Projects", "Toolbox","Experience", "Services"];
 
   useEffect(() => {
     gsap.to(logoRef.current, {
