@@ -6,22 +6,33 @@ import WorkSampleImg from "../assets/AoVi0HG0bEq.png";
 import WorkSample1 from "../assets/AoVi0HG0bEq (1).png";
 import WorkSample2 from "../assets/AoVi0HG0bEq (2).png";
 import WorkSample3 from "../assets/AoVi0HG0bEq (3).png";
+import WorkSample4 from "../assets/AoVi0HG0bEq (5).png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projectData = [
   {
     id: "1",
+    name: "Coza Store",
+    description:
+      "Modern eCommerce website with interactive product slider, responsive design, and clean UI using HTML, CSS, and Swiper.js.",
+    technologies: ["HTML", "CSS", "Swiper.js"],
+    github: "https://github.com/Pketu916/appsRow/tree/main/everX",
+    liveDemo: "https://apps-row-8dqs.vercel.app/",
+    imageUrl: WorkSample4,
+  },
+  {
+    id: "2",
     name: "Ever X",
     description:
-      "Full-stack appointment booking platform with secure login/signup, patient record management, responsive dashboard, and REST API backend.",
+      "Full-stack appointment booking system with secure authentication, patient management, responsive dashboard, and RESTful API using MERN stack.",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
     github: "https://github.com/Pketu916/appsRow/tree/main/everX",
     liveDemo: "https://everx.vercel.app/",
     imageUrl: WorkSampleImg,
   },
   {
-    id: "2",
+    id: "3",
     name: "Nestora",
     description:
       "Modern fashion landing page with responsive design, animated sections, smooth scroll, and clean layout using Tailwind CSS.",
@@ -31,7 +42,7 @@ const projectData = [
     imageUrl: WorkSample1,
   },
   {
-    id: "3",
+    id: "4",
     name: "Samarth E-Mobility",
     description:
       "Next-gen EV company website with animated hero sections, Framer Motion effects, and fully responsive design.",
@@ -41,7 +52,7 @@ const projectData = [
     imageUrl: WorkSample2,
   },
   {
-    id: "4",
+    id: "5",
     name: "Dashify",
     description:
       "SaaS dashboard UI with React, reusable components, animated transitions, and a clean, responsive layout.",
@@ -117,7 +128,7 @@ const WorkSample = () => {
 
   return (
     <div
-    id="projects"
+      id="projects"
       ref={containerRef}
       className="bg-gradient-to-b from-black via-[#0d0d0d] to-black text-white px-6 md:px-24 py-24"
     >
