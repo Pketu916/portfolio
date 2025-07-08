@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { experienceData } from "./ExperienceData"; // Adjust path accordingly
+import { experienceData } from "../../experienceData.js"; // Adjust path accordingly
 
 gsap.registerPlugin(ScrollTrigger);
 
