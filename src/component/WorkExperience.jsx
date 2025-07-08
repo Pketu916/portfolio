@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { experienceData } from "../../experienceData.js"; // Adjust path accordingly
+import experienceData from "../../experienceData.js"; // Adjust path accordingly
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,7 +54,10 @@ const Experience = () => {
             </p>
             <ul className="list-disc list-inside text-gray-300 space-y-1">
               {exp.responsibilities.map((item, i) => (
-                <li key={i} className="group-hover:text-white transition-colors">
+                <li
+                  key={i}
+                  className="group-hover:text-white transition-colors"
+                >
                   {item}
                 </li>
               ))}

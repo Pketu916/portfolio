@@ -1,4 +1,4 @@
-export const experienceData = [
+ const experienceData = [
   {
     company: "Appsrow Solution",
     role: "Front End Developer",
@@ -31,3 +31,5 @@ export const experienceData = [
     ],
   },
 ];
+
+export default experienceData
