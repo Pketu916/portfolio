@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Home from "./pages/home";
-import AllProjects from "./pages/AllProjects";
+import AllProjects from "./pages/allProjects.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,14 +36,18 @@ function App() {
         return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
       },
       getBoundingClientRect() {
-        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
       },
       fixedMarkers: true,
     });
-
   }, []);
 
-   return (
+  return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
