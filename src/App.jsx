@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Home from "./pages/home";
-import AllProjects from "./pages/allProjects.jsx";
+import allProjects from "./pages/allProjects.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +51,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<AllProjects />} />
+        <Route path="/projects" element={<allProjects />} />
       </Routes>
     </Router>
   );
