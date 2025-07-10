@@ -3,7 +3,7 @@ import projectData from "../component/projectData"; // same array as used in Wor
 import Header from "../component/header";
 import Footer from "../component/footer";
 
-const allProjects = () => {
+const AllProjects = () => {
   const [filter, setFilter] = useState("All");
 
   const technologies = [
@@ -94,4 +94,4 @@ const allProjects = () => {
   );
 };
 
-export default allProjects;
+export default AllProjects;
