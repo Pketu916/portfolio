@@ -2,15 +2,20 @@ import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "./App.css";
-import Home from "./pages/home";
-import AllProjects from "./pages/AllProjects";
+import Benefits from "../component/Benefits";
+import Footer from "../component/footer";
+import Header from "../component/header";
+import { Hero } from "../component/hero";
+import Services from "../component/Services";
+import SkillGrid from "../component/skills";
+import WorkSample from "../component/WorkSample";
+import CustomCursor from "../component/CustomCursor";
+import WorkExperience from "../component/WorkExperience";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function App() {
+function Home() {
   useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
@@ -43,14 +48,19 @@ function App() {
 
   }, []);
 
-   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<AllProjects />} />
-      </Routes>
-    </Router>
+  return (
+    <>
+      <Header />
+      <Hero />
+      <WorkSample />
+      <SkillGrid />
+      <WorkExperience/>
+      <Benefits />
+      <Services />
+      <Footer />
+      <CustomCursor />
+    </>
   );
 }
 
-export default App;
+export default Home;

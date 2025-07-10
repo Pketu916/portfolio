@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -65,6 +66,7 @@ const projectData = [
 
 const WorkSample = () => {
   const containerRef = useRef();
+  const visibleProjects = projectData.slice(0, 2); // show first 2 projects
 
   useEffect(() => {
     const sections = gsap.utils.toArray(".project-block");
@@ -136,10 +138,10 @@ const WorkSample = () => {
         🚀 Crazy Work Showcase
       </h1>
 
-      {projectData.map((project, idx) => (
+      {visibleProjects.map((project, idx) => (
         <section
           key={project.id}
-          className={`project-block mb-32 relative  flex flex-col md:flex-row gap-12 items-center ${
+          className={`project-block mb-32 relative flex flex-col md:flex-row gap-12 items-center ${
             idx % 2 !== 0 ? "md:flex-row-reverse" : ""
           }`}
         >
@@ -187,6 +189,15 @@ const WorkSample = () => {
           </div>
         </section>
       ))}
+
+      <div className="text-center mt-10">
+        <Link
+          to="/projects"
+          className="inline-block px-8 py-3 text-white font-semibold bg-gradient-to-r from-purple-500 to-pink-600 rounded-full hover:scale-105 transition"
+        >
+          View All Projects
+        </Link>
+      </div>
     </div>
   );
 };

@@ -1,45 +1,69 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-const LiquidCursor = () => {
-  const cursorRef = useRef(null);
+const CustomCursor = () => {
+  const outerRef = useRef(null);
+  const dotRef = useRef(null);
 
   useEffect(() => {
-    const cursor = cursorRef.current;
+    const outer = outerRef.current;
+    const dot = dotRef.current;
 
     const moveCursor = (e) => {
-      gsap.to(cursor, {
+      // Slow follow for outer circle
+      gsap.to(outer, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.15,
+        duration: 0.25,
+        ease: "power2.out",
+      });
+
+      // Fast follow for center dot
+      gsap.to(dot, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.1,
         ease: "power3.out",
       });
     };
 
     window.addEventListener("mousemove", moveCursor);
-
     return () => window.removeEventListener("mousemove", moveCursor);
   }, []);
 
   return (
-    <div
-      ref={cursorRef}
-      className="fixed top-0 left-0 z-[9999] pointer-events-none"
-      style={{
-        width: "40px",
-        height: "40px",
-        transform: "translate(-50%, -50%)",
-        backdropFilter: "blur(1px)",
-        WebkitBackdropFilter: "blur(1px)",
-        background: "rgba(255, 255, 255, 0)",
-        border: "1px solid rgba(255, 255, 255, 0.5)",
-        borderRadius: "50%",
-        boxShadow: "0 0 6px rgba(0, 255, 255, 0.3)",
-        transition: "all 0.1s ease",
-        filter: "drop-shadow(0 0 4px rgba(0, 255, 255, 0.2))",
-      }}
-    ></div>
+    <>
+      {/* Outer Circle */}
+      <div
+        ref={outerRef}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none"
+        style={{
+          width: "40px",
+          height: "40px",
+          transform: "translate(-50%, -50%)",
+          // border: "2px solid rgba(255, 255, 255, 0.6)",
+          border: "2px solid rgba(255, 255, 0, 0.6)",
+          borderRadius: "50%",
+          backgroundColor: "transparent",
+          backdropFilter: "blur(2px)",
+          WebkitBackdropFilter: "blur(2px)",
+        }}
+      ></div>
+
+      {/* Center Dot */}
+      <div
+        ref={dotRef}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none"
+        style={{
+          width: "6px",
+          height: "6px",
+          backgroundColor: "rgba(255, 255, 0, 0.6)",
+          borderRadius: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      ></div>
+    </>
   );
 };
 
-export default LiquidCursor;
+export default CustomCursor;
