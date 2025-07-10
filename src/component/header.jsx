@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { FaInstagram, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const logoRef = useRef(null);
@@ -11,7 +12,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("Home");
 
-  const navItems = ["Home", "Projects", "Toolbox","Experience", "Services"];
+  const navItems = ["Home", "Projects", "Toolbox", "Experience", "Services"];
 
   useEffect(() => {
     gsap.to(logoRef.current, {
@@ -76,11 +77,20 @@ const Header = () => {
     <>
       <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md text-white px-[5vw] py-4 flex justify-between items-center">
         {/* Logo */}
-        <div ref={logoRef} className="flex items-center gap-2 cursor-pointer select-none">
-          <a href="#hero" className="flex items-center gap-2">
+        <div
+          ref={logoRef}
+          className="flex items-center gap-2 cursor-pointer select-none"
+        >
+          <Link
+            to="/"
+            className="flex items-center gap-2"
+            onClick={() => scrollToSection("Home")}
+          >
             <span className="text-xl font-bold">Ketu</span>
-            <span ref={patelRef} className="text-cyan-400 font-bold">Patel</span>
-          </a>
+            <span ref={patelRef} className="text-cyan-400 font-bold">
+              Patel
+            </span>
+          </Link>
         </div>
 
         {/* Desktop Nav */}
@@ -103,14 +113,32 @@ const Header = () => {
 
         {/* Socials */}
         <div className="hidden md:flex gap-3 text-gray-400 items-center">
-          <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="mailto:contact@ketupatel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaEnvelope className="cursor-pointer" />
           </a>
-          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
-            <FaInstagram ref={(el) => (socialsRef.current[0] = el)} className="cursor-pointer" />
+          <a
+            href="https://www.instagram.com/k2__patel_/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram
+              ref={(el) => (socialsRef.current[0] = el)}
+              className="cursor-pointer"
+            />
           </a>
-          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn ref={(el) => (socialsRef.current[1] = el)} className="cursor-pointer" />
+          <a
+            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedinIn
+              ref={(el) => (socialsRef.current[1] = el)}
+              className="cursor-pointer"
+            />
           </a>
         </div>
 
@@ -119,7 +147,14 @@ const Header = () => {
           className="md:hidden w-8 h-8 relative cursor-pointer flex items-center justify-center"
           onClick={handleMenuToggle}
         >
-          <svg className="w-6 h-6 stroke-white" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            className="w-6 h-6 stroke-white"
+            viewBox="0 0 24 24"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <line
               x1="3"
               y1="6"
@@ -127,7 +162,9 @@ const Header = () => {
               y2="6"
               className="transition-transform origin-center"
               style={{
-                transform: menuOpen ? "rotate(45deg) translate(0px, 6px)" : "rotate(0) translate(0, 0)",
+                transform: menuOpen
+                  ? "rotate(45deg) translate(0px, 6px)"
+                  : "rotate(0) translate(0, 0)",
                 transition: "transform 0.3s ease",
               }}
             />
@@ -149,7 +186,9 @@ const Header = () => {
               y2="18"
               className="transition-transform origin-center"
               style={{
-                transform: menuOpen ? "rotate(-45deg) translate(0px, -6px)" : "rotate(0) translate(0, 0)",
+                transform: menuOpen
+                  ? "rotate(-45deg) translate(0px, -6px)"
+                  : "rotate(0) translate(0, 0)",
                 transition: "transform 0.3s ease",
               }}
             />
@@ -174,13 +213,25 @@ const Header = () => {
           </span>
         ))}
         <div className="flex gap-6 text-2xl mt-6">
-          <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="mailto:contact@ketupatel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaEnvelope className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
-          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/k2__patel_/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
-          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedinIn className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
         </div>
