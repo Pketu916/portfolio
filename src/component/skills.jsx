@@ -104,12 +104,12 @@ const Skills = () => {
 
   const toolboxItems = [
     ["React.js", "https://cdn.worldvectorlogo.com/logos/react-2.svg"],
-    ["Next.js", "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg"],
+    ["Node.js", "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"],
+   ["webflow", "https://www.svgrepo.com/show/354543/webflow.svg"],
     ["Tailwind CSS", "https://www.svgrepo.com/show/374118/tailwind.svg"],
     ["JavaScript", "https://cdn.worldvectorlogo.com/logos/logo-javascript.svg"],
     ["GSAP", "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg"],
     ["TypeScript", "https://cdn.worldvectorlogo.com/logos/typescript.svg"],
-    ["Node.js", "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"],
     // ["MongoDB", "https://cdn-icons-png.flaticon.com/512/919/919836.png"],
     ["CSS", "https://cdn.worldvectorlogo.com/logos/css-3.svg"],
     ["GitHub", "https://cdn-icons-png.flaticon.com/512/733/733553.png"],

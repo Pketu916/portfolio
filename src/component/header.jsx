@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { FaInstagram, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const logoRef = useRef(null);
@@ -13,6 +13,8 @@ const Header = () => {
   const [active, setActive] = useState("Home");
 
   const navItems = ["Home", "Projects", "Toolbox", "Experience", "Services"];
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     gsap.to(logoRef.current, {
@@ -42,28 +44,6 @@ const Header = () => {
     });
   }, []);
 
-  const scrollToSection = (id) => {
-    const sectionId = id.toLowerCase() === "home" ? "hero" : id.toLowerCase();
-    const section = document.getElementById(sectionId);
-
-    if (section) {
-      const offsetTop = section.getBoundingClientRect().top + window.scrollY;
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth", // Lenis overrides this for buttery smooth scroll
-      });
-
-      setActive(id);
-      setMenuOpen(false);
-      gsap.to(menuRef.current, {
-        x: "100%",
-        duration: 0.5,
-        ease: "power2.inOut",
-      });
-    }
-  };
-
   const handleMenuToggle = () => {
     setMenuOpen((prev) => !prev);
     gsap.to(menuRef.current, {
@@ -73,23 +53,50 @@ const Header = () => {
     });
   };
 
+  // Navigate and scroll to section
+  const handleNavigateTo = (target) => {
+    const sectionId = target.toLowerCase() === "home" ? "hero" : target.toLowerCase();
+
+    if (target === "Projects") {
+      navigate("/projects");
+      setActive("Projects");
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollToId: sectionId } });
+    } else {
+      scrollToSection(sectionId);
+    }
+
+    setActive(target);
+    setMenuOpen(false);
+    gsap.to(menuRef.current, {
+      x: "100%",
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  };
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const offsetTop = section.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md text-white px-[5vw] py-4 flex justify-between items-center">
         {/* Logo */}
-        <div
-          ref={logoRef}
-          className="flex items-center gap-2 cursor-pointer select-none"
-        >
-          <Link
-            to="/"
-            className="flex items-center gap-2"
-            onClick={() => scrollToSection("Home")}
-          >
+        <div ref={logoRef} className="flex items-center gap-2 cursor-pointer select-none">
+          <Link to="/" className="flex items-center gap-2" onClick={() => handleNavigateTo("Home")}>
             <span className="text-xl font-bold">Ketu</span>
-            <span ref={patelRef} className="text-cyan-400 font-bold">
-              Patel
-            </span>
+            <span ref={patelRef} className="text-cyan-400 font-bold">Patel</span>
           </Link>
         </div>
 
@@ -104,7 +111,7 @@ const Header = () => {
                   ? "text-cyan-400 border-b-2 border-cyan-400"
                   : "text-gray-300 hover:text-cyan-300"
               }`}
-              onClick={() => scrollToSection(text)}
+              onClick={() => handleNavigateTo(text)}
             >
               {text}
             </span>
@@ -113,32 +120,14 @@ const Header = () => {
 
         {/* Socials */}
         <div className="hidden md:flex gap-3 text-gray-400 items-center">
-          <a
-            href="mailto:contact@ketupatel.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
             <FaEnvelope className="cursor-pointer" />
           </a>
-          <a
-            href="https://www.instagram.com/k2__patel_/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram
-              ref={(el) => (socialsRef.current[0] = el)}
-              className="cursor-pointer"
-            />
+          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
+            <FaInstagram ref={(el) => (socialsRef.current[0] = el)} className="cursor-pointer" />
           </a>
-          <a
-            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedinIn
-              ref={(el) => (socialsRef.current[1] = el)}
-              className="cursor-pointer"
-            />
+          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedinIn ref={(el) => (socialsRef.current[1] = el)} className="cursor-pointer" />
           </a>
         </div>
 
@@ -196,7 +185,7 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Full Screen Mobile Menu */}
+      {/* Mobile Menu */}
       <div
         ref={menuRef}
         className="fixed top-0 right-0 w-full h-screen bg-black text-white z-40 flex flex-col justify-center items-center text-3xl gap-10 translate-x-full"
@@ -207,31 +196,19 @@ const Header = () => {
             className={`hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer ${
               active === item ? "text-cyan-400" : "text-white"
             }`}
-            onClick={() => scrollToSection(item)}
+            onClick={() => handleNavigateTo(item)}
           >
             {item}
           </span>
         ))}
         <div className="flex gap-6 text-2xl mt-6">
-          <a
-            href="mailto:contact@ketupatel.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
             <FaEnvelope className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
-          <a
-            href="https://www.instagram.com/k2__patel_/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
             <FaInstagram className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
-          <a
-            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
             <FaLinkedinIn className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
         </div>

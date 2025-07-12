@@ -3,6 +3,7 @@ import WorkSample1 from "../assets/AoVi0HG0bEq (1).png";
 import WorkSample2 from "../assets/AoVi0HG0bEq (2).png";
 import WorkSample3 from "../assets/AoVi0HG0bEq (3).png";
 import WorkSample4 from "../assets/AoVi0HG0bEq (5).png";
+import WorkSample5 from "../assets/AoVi0HG0bEq (6).png";
 
 const projectData = [
   {
@@ -42,7 +43,7 @@ const projectData = [
       "Next-gen EV company website with animated hero sections, Framer Motion effects, and fully responsive design.",
     technologies: ["React.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
     github: "https://github.com/Pketu916/samarth-e-mobility",
-    liveDemo: "https://samarth-e-mobility-xrx4.vercel.app//",
+    liveDemo: "https://samarth-e-mobility-xrx4.vercel.app/",
     imageUrl: WorkSample2,
   },
   {
@@ -52,9 +53,20 @@ const projectData = [
       "SaaS dashboard UI with React, reusable components, animated transitions, and a clean, responsive layout.",
     technologies: ["React.js", "Tailwind CSS", "TypeScript"],
     github: "https://github.com/Pketu916/appsRow/tree/main/dashify",
-    liveDemo: "https://apps-row-ioxu.vercel.app//",
+    liveDemo: "https://apps-row-ioxu.vercel.app/",
     imageUrl: WorkSample3,
   },
+  {
+    id: "6",
+    name: "Kevin Portfolio",
+    description:
+      "Portfolio website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
+    technologies: ["Webflow", "HTML", "CSS"],
+    github: null, // No GitHub repo for Webflow
+    liveDemo: "https://ketus-kevin-portfolio-6bca6f.webflow.io/",
+    imageUrl: WorkSample5, // <- Replace with the actual image you use
+  },
 ];
+
 
 export default projectData;
