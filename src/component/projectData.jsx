@@ -4,6 +4,7 @@ import WorkSample2 from "../assets/AoVi0HG0bEq (2).png";
 import WorkSample3 from "../assets/AoVi0HG0bEq (3).png";
 import WorkSample4 from "../assets/AoVi0HG0bEq (5).png";
 import WorkSample5 from "../assets/AoVi0HG0bEq (6).png";
+import WorkSample6 from "../assets/AoVi0HG0bEq (7).png";
 
 const projectData = [
   {
@@ -58,6 +59,16 @@ const projectData = [
   },
   {
     id: "6",
+    name: "colaba",
+    description:
+      "Portfolio website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
+    technologies: ["Webflow", "HTML", "CSS"],
+    github: null, // No GitHub repo for Webflow
+    liveDemo: "https://ketus-trendy-site.webflow.io/",
+    imageUrl: WorkSample6, // <- Replace with the actual image you use
+  },
+    {
+    id: "7",
     name: "Kevin Portfolio",
     description:
       "Portfolio website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",

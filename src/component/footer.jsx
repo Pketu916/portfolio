@@ -100,7 +100,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div className="flex flex-col justify-between h-full">
-          <div className="flex flex-col flex-wrap content-center">
+          <div className="flex flex-col flex-wrap md:content-center content-start">
             <h3 className="text-2xl font-semibold text-cyan-400 mb-6">
               Quick Links
             </h3>
