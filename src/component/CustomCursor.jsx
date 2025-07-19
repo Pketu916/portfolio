@@ -15,7 +15,7 @@ const CustomCursor = () => {
         x: e.clientX,
         y: e.clientY,
         duration: 0.25,
-        ease: "power2.out",
+        ease: "power4.out",
       });
 
       // Fast follow for center dot
@@ -23,7 +23,7 @@ const CustomCursor = () => {
         x: e.clientX,
         y: e.clientY,
         duration: 0.1,
-        ease: "power3.out",
+        ease: "power4.out",
       });
     };
 

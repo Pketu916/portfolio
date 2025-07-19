@@ -50,7 +50,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+      <Header isHome={true} />
       <Hero />
       <WorkSample />
       <SkillGrid />

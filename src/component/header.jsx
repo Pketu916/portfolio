@@ -1,20 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { FaInstagram, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import NavLinks from "./navLinks";
+import lenis from "../hooks/lenis"; // adjust this path based on your project
 
-const Header = () => {
+const Header = ({ isHome }) => {
   const logoRef = useRef(null);
   const patelRef = useRef(null);
   const socialsRef = useRef([]);
-  const navLinksRef = useRef([]);
   const menuRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState("Home");
-
-  const navItems = ["Home", "Projects", "Toolbox", "Experience", "Services"];
   const navigate = useNavigate();
-  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const allNavItems = [
+    { name: "Home", id: "hero", path: "/" },
+    { name: "Projects", path: "/projects" },
+    { name: "Toolbox", id: "toolbox", path: "/" },
+    { name: "Experience", id: "experience", path: "/" },
+    { name: "Services", id: "services", path: "/" },
+    { name: "Contact", id: "footer", path: "/" },
+  ];
+
+  const navItems = isHome
+    ? allNavItems
+    : allNavItems.filter((item) =>
+        ["Home", "Projects", "Contact"].includes(item.name)
+      );
 
   useEffect(() => {
     gsap.to(logoRef.current, {
@@ -44,48 +56,41 @@ const Header = () => {
     });
   }, []);
 
-  const handleMenuToggle = () => {
-    setMenuOpen((prev) => !prev);
-    gsap.to(menuRef.current, {
-      x: menuOpen ? "100%" : "0%",
-      duration: 0.5,
-      ease: "power2.inOut",
-    });
-  };
-
-  // Navigate and scroll to section
-  const handleNavigateTo = (target) => {
-    const sectionId = target.toLowerCase() === "home" ? "hero" : target.toLowerCase();
-
-    if (target === "Projects") {
-      navigate("/projects");
-      setActive("Projects");
-      return;
-    }
-
-    if (location.pathname !== "/") {
-      navigate("/", { state: { scrollToId: sectionId } });
-    } else {
-      scrollToSection(sectionId);
-    }
-
-    setActive(target);
-    setMenuOpen(false);
-    gsap.to(menuRef.current, {
-      x: "100%",
-      duration: 0.5,
-      ease: "power2.inOut",
-    });
-  };
-
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      const offsetTop = section.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
+  const closeMobileMenu = () => {
+    if (menuRef.current.classList.contains("translate-x-0")) {
+      gsap.to(menuRef.current, {
+        x: "100%",
+        duration: 0.5,
+        ease: "power2.inOut",
       });
+      menuRef.current.classList.remove("translate-x-0");
+      setMenuOpen(false);
+    }
+  };
+
+  const handleMenuToggle = () => {
+    const isOpen = menuRef.current.classList.contains("translate-x-0");
+
+    gsap.to(menuRef.current, {
+      x: isOpen ? "100%" : "0%",
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+
+    menuRef.current.classList.toggle("translate-x-0");
+    setMenuOpen(!isOpen);
+  };
+
+  const handleNavClick = (item) => {
+    closeMobileMenu(); // always close if open
+
+    if (isHome && item.id) {
+      const el = document.getElementById(item.id);
+      if (el) lenis.scrollTo(el);
+    } else if (item.id === "footer") {
+      navigate("/", { state: { scrollToId: "footer" } });
+    } else {
+      navigate(item.path);
     }
   };
 
@@ -93,45 +98,50 @@ const Header = () => {
     <>
       <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md text-white px-[5vw] py-4 flex justify-between items-center">
         {/* Logo */}
-        <div ref={logoRef} className="flex items-center gap-2 cursor-pointer select-none">
-          <Link to="/" className="flex items-center gap-2" onClick={() => handleNavigateTo("Home")}>
+        <div
+          ref={logoRef}
+          className="flex items-center gap-2 cursor-pointer select-none"
+        >
+          <Link to="/" className="flex items-center gap-2">
             <span className="text-xl font-bold">Ketu</span>
-            <span ref={patelRef} className="text-cyan-400 font-bold">Patel</span>
+            <span ref={patelRef} className="text-cyan-400 font-bold">
+              Patel
+            </span>
           </Link>
         </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8 text-sm uppercase">
-          {navItems.map((text, i) => (
-            <span
-              key={i}
-              ref={(el) => (navLinksRef.current[i] = el)}
-              className={`relative cursor-pointer transition pb-1 ${
-                active === text
-                  ? "text-cyan-400 border-b-2 border-cyan-400"
-                  : "text-gray-300 hover:text-cyan-300"
-              }`}
-              onClick={() => handleNavigateTo(text)}
-            >
-              {text}
-            </span>
-          ))}
+          <NavLinks
+            isHome={isHome}
+            navItems={navItems}
+            handleNavClick={handleNavClick}
+          />
         </nav>
 
-        {/* Socials */}
+        {/* Social Icons */}
         <div className="hidden md:flex gap-3 text-gray-400 items-center">
-          <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:contact@ketupatel.com" target="_blank">
             <FaEnvelope className="cursor-pointer" />
           </a>
-          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
-            <FaInstagram ref={(el) => (socialsRef.current[0] = el)} className="cursor-pointer" />
+          <a href="https://www.instagram.com/k2__patel_/" target="_blank">
+            <FaInstagram
+              ref={(el) => (socialsRef.current[0] = el)}
+              className="cursor-pointer"
+            />
           </a>
-          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn ref={(el) => (socialsRef.current[1] = el)} className="cursor-pointer" />
+          <a
+            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
+            target="_blank"
+          >
+            <FaLinkedinIn
+              ref={(el) => (socialsRef.current[1] = el)}
+              className="cursor-pointer"
+            />
           </a>
         </div>
 
-        {/* Mobile Icon */}
+        {/* Mobile Menu Icon */}
         <div
           className="md:hidden w-8 h-8 relative cursor-pointer flex items-center justify-center"
           onClick={handleMenuToggle}
@@ -188,27 +198,28 @@ const Header = () => {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 w-full h-screen bg-black text-white z-40 flex flex-col justify-center items-center text-3xl gap-10 translate-x-full"
+        className="fixed top-0 right-0 w-full h-screen bg-black text-white z-20 flex flex-col justify-center items-center text-3xl gap-6 translate-x-full"
       >
-        {navItems.map((item, i) => (
-          <span
-            key={i}
-            className={`hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer ${
-              active === item ? "text-cyan-400" : "text-white"
-            }`}
-            onClick={() => handleNavigateTo(item)}
-          >
-            {item}
-          </span>
-        ))}
+        <nav className="flex flex-col items-center gap-6 text-lg uppercase">
+          <NavLinks
+            isHome={isHome}
+            navItems={navItems}
+            handleNavClick={handleNavClick}
+          />
+        </nav>
+
+        {/* Mobile Social Icons */}
         <div className="flex gap-6 text-2xl mt-6">
-          <a href="mailto:contact@ketupatel.com" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:contact@ketupatel.com" target="_blank">
             <FaEnvelope className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
-          <a href="https://www.instagram.com/k2__patel_/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/k2__patel_/" target="_blank">
             <FaInstagram className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
-          <a href="https://www.linkedin.com/in/ketu-patel-b9a104232/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
+            target="_blank"
+          >
             <FaLinkedinIn className="cursor-pointer text-gray-400 hover:text-white" />
           </a>
         </div>

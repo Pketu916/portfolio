@@ -22,7 +22,7 @@ const Benefits = () => {
           y: 0,
           scale: 1,
           duration: 0.7,
-          ease: "power3.out",
+          ease: "power4.out",
           scrollTrigger: {
             trigger: el,
             start: "top 90%",

@@ -18,7 +18,7 @@ const AllProjects = () => {
 
   return (
     <>
-      <Header />
+      <Header isHome={false} />
       <div className="min-h-screen bg-black text-white px-6 md:px-24 py-24">
         <h1 className="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent bg-clip-text">
           All Projects
@@ -51,6 +51,7 @@ const AllProjects = () => {
               <img
                 src={project.imageUrl}
                 alt={project.name}
+                loading="lazy"
                 className="w-full rounded-xl mb-4"
               />
               <h2 className="text-2xl font-bold text-teal-400 mb-2">

@@ -87,8 +87,8 @@ const Skills = () => {
         y: `+=${velocityY}`,
         rotate: (Math.random() - 0.5) * 40,
         scale: 1.1,
-        ease: "power4.out",
-        duration: 0.4,
+        ease: "power3.out",
+        duration: 1,
       });
 
       tl.to(card, {
@@ -96,7 +96,8 @@ const Skills = () => {
         y: 0,
         rotate: 0,
         scale: 1,
-        ease: "elastic.out(1, 0.4)",
+        // ease: "elastic.out(1, 0.4)",
+        ease: "power3.out",
         duration: 1,
       });
     }

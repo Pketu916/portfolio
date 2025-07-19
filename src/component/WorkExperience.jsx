@@ -18,8 +18,8 @@ const Experience = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: "power3.out",
+          duration: 0.6,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: card,
             start: "top 85%",
