@@ -34,9 +34,9 @@ const Experience = () => {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative w-full bg-black text-white flex flex-col items-center px-[5vw] py-20"
+      className="relative w-full bg-black text-white flex flex-col items-center px-[5vw] py-8 md:py-24"
     >
-      <h2 className="text-4xl md:text-6xl font-bold text-cyan-400 mb-16 text-center">
+      <h2 className="text-3xl md:text-5xl font-bold text-cyan-400 gap-8 md:mb-16 text-center">
         My Experience
       </h2>
 

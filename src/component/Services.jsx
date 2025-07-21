@@ -108,10 +108,10 @@ const Services = () => {
 
   return (
       <section
-      className="py-24 px-[5vw] bg-gradient-to-br from-[#0f0f0f] via-black to-[#0f0f0f] text-white"
+      className="py-8 md:py-24 px-[5vw] bg-gradient-to-br from-[#0f0f0f] via-black to-[#0f0f0f] text-white"
       id="services"
     >
-      <div className="text-center mb-16">
+      <div className="text-center mb-8 md:mb-16">
         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-cyan-400">My Services</h2>
         <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
           I craft full-stack experiences that blend design, performance, and modern development practices.

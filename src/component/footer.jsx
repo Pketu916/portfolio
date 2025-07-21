@@ -59,7 +59,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bg-gradient-to-t from-black via-[#0b0b0b] to-black text-white px-[5vw] py-24"
+      className="bg-gradient-to-t from-black via-[#0b0b0b] to-black text-white px-[5vw] py-8 md:py-24"
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
         {/* Branding Section */}

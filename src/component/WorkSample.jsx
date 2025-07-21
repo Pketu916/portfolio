@@ -72,12 +72,12 @@ const WorkSample = () => {
   }, []);
 
   return (
-    <div
+    <section
       id="projects"
       ref={containerRef}
-      className="bg-gradient-to-b from-black via-[#0d0d0d] to-black text-white px-6 md:px-24 py-24"
+      className="bg-gradient-to-b from-black via-[#0d0d0d] to-black text-white px-6 md:px-24 py-8 md:py-24"
     >
-      <h1 className="text-5xl md:text-6xl font-extrabold text-center mb-20 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
+      <h1 className="text-3xl md:text-5xl font-extrabold text-center mb-20 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
         🚀 Crazy Work Showcase
       </h1>
 
@@ -95,10 +95,10 @@ const WorkSample = () => {
           />
 
           <div className="text-content md:w-1/2 sticky top-24 self-start">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
               {project.name}
             </h2>
-            <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
@@ -141,7 +141,7 @@ const WorkSample = () => {
           View All Projects
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

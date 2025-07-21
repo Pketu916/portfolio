@@ -2,6 +2,7 @@ import { useState } from "react";
 import projectData from "../component/projectData"; // same array as used in WorkSample
 import Header from "../component/header";
 import Footer from "../component/footer";
+import CustomCursor from "../component/CustomCursor";
 
 const AllProjects = () => {
   const [filter, setFilter] = useState("All");
@@ -18,14 +19,14 @@ const AllProjects = () => {
 
   return (
     <>
-      <Header isHome={false} />
+      <Header />
       <div className="min-h-screen bg-black text-white px-6 md:px-24 py-24">
-        <h1 className="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent bg-clip-text">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent bg-clip-text">
           All Projects
         </h1>
 
         {/* Filter buttons */}
-        <div className="flex flex-wrap gap-4 justify-center mb-10">
+        <div className="flex flex-wrap gap-3 md:gap-4 justify-center mb-10">
           {technologies.map((tech, idx) => (
             <button
               key={idx}
@@ -69,28 +70,42 @@ const AllProjects = () => {
                 ))}
               </div>
               <div className="flex gap-3">
-                <a
-                  href={project.liveDemo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-green-600 px-4 py-2 rounded-full text-white text-sm"
-                >
-                  Live
-                </a>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-blue-600 px-4 py-2 rounded-full text-white text-sm"
-                >
-                  GitHub
-                </a>
+                {project.liveDemo ? (
+                  <a
+                    href={project.liveDemo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-green-600 px-4 py-2 rounded-full text-white text-sm hover:bg-green-700 transition"
+                  >
+                    Live
+                  </a>
+                ) : (
+                  <span className="bg-gray-800 text-gray-500 px-4 py-2 rounded-full text-sm cursor-not-allowed">
+                    No Live Demo
+                  </span>
+                )}
+
+                {project.github ? (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-blue-600 px-4 py-2 rounded-full text-white text-sm hover:bg-blue-700 transition"
+                  >
+                    GitHub
+                  </a>
+                ) : (
+                  <span className="bg-gray-800 text-gray-500 px-4 py-2 rounded-full text-sm cursor-not-allowed">
+                    No GitHub
+                  </span>
+                )}
               </div>
             </div>
           ))}
         </div>
       </div>
       <Footer />
+            <CustomCursor/>
     </>
   );
 };

@@ -36,7 +36,7 @@ const CustomCursor = () => {
       {/* Outer Circle */}
       <div
         ref={outerRef}
-        className="fixed top-0 left-0 z-[9999] pointer-events-none"
+        className="fixed top-0 left-0 z-[40] pointer-events-none"
         style={{
           width: "40px",
           height: "40px",

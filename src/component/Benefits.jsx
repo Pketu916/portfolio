@@ -67,12 +67,12 @@ const Benefits = () => {
 
   return (
     <section
-      className="relative bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-[5vw] overflow-hidden"
+      className="relative bg-gradient-to-b from-black via-gray-900 to-black text-white py-8 md:py-24 px-[5vw] overflow-hidden"
       id="benefits"
     >
       {/* Top Wavy SVG */}
-      <svg
-        className="absolute top-0 left-0 w-full h-32 md:h-48 text-gray-900"
+      {/* <svg
+        className="absolute top-0 left-0 w-full h-32 md:h-48 text-gray-900 -translate-y-1"
         preserveAspectRatio="none"
         viewBox="0 0 1440 320"
       >
@@ -80,11 +80,11 @@ const Benefits = () => {
           fill="currentColor"
           d="M0,32L80,42.7C160,53,320,75,480,90.7C640,107,800,117,960,112C1120,107,1280,85,1360,74.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
         ></path>
-      </svg>
+      </svg> */}
 
       {/* Title */}
-      <div className="text-center mb-16 relative z-10">
-        <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-4xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse">
+      <div className="text-center mb-8 md:mb-16 relative z-10">
+        <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse">
           Why Choose Me?
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto mt-4">
@@ -112,8 +112,8 @@ const Benefits = () => {
       </div>
 
       {/* Bottom Wavy SVG */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-32 md:h-48 text-black"
+      {/* <svg
+        className="absolute bottom-0 left-0 w-full h-32 md:h-48 text-black translate-y-1"
         preserveAspectRatio="none"
         viewBox="0 0 1440 320"
       >
@@ -121,7 +121,7 @@ const Benefits = () => {
           fill="currentColor"
           d="M0,224L80,229.3C160,235,320,245,480,234.7C640,224,800,192,960,181.3C1120,171,1280,181,1360,186.7L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
         ></path>
-      </svg>
+      </svg> */}
     </section>
   );
 };

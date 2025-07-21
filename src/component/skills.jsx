@@ -121,14 +121,14 @@ const Skills = () => {
 
   return (
     <section
-      className="bg-black flex flex-col items-center py-[4vw] relative overflow-hidden"
+      className="bg-black flex flex-col items-center relative overflow-hidden py-8 md:py-24"
       id="toolbox"
     >
       <div className="custom-container">
         <div className="w-[70vw] flex flex-col items-start gap-[5vw]">
           <h2
             className="text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 
-text-4xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse w-full"
+text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse w-full"
           >
             My Toolbox
           </h2>
@@ -156,7 +156,7 @@ text-4xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg anima
 
           <div
             ref={controllerRef}
-            className="w-[10vw] h-[10vw] md:w-[5vw] md:h-[5vw] rounded-full bg-cyan-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 cursor-grab shadow-[0_0_1vw_rgba(0,0,0,0.3)] flex items-center justify-center text-white font-bold text-[1vw] select-none"
+            className="w-[10vw] h-[10vw] md:w-[5vw] md:h-[5vw] rounded-full bg-cyan-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 cursor-grab shadow-[0_0_1vw_rgba(0,0,0,0.3)] flex items-center justify-center text-white font-bold text-[1vw] select-none"
           >
             Drag
           </div>

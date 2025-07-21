@@ -1,32 +1,63 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { FaInstagram, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import NavLinks from "./navLinks";
-import lenis from "../hooks/lenis"; // adjust this path based on your project
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import lenis from "../hooks/lenis";
 
-const Header = ({ isHome }) => {
+const Header = () => {
   const logoRef = useRef(null);
   const patelRef = useRef(null);
   const socialsRef = useRef([]);
   const menuRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const allNavItems = [
-    { name: "Home", id: "hero", path: "/" },
+  const navLinks = [
+    { name: "Home", path: "/" },
     { name: "Projects", path: "/projects" },
-    { name: "Toolbox", id: "toolbox", path: "/" },
-    { name: "Experience", id: "experience", path: "/" },
-    { name: "Services", id: "services", path: "/" },
-    { name: "Contact", id: "footer", path: "/" },
+    { name: "About Me", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Contact", scrollId: "footer" }, // Scroll to #footer
   ];
 
-  const navItems = isHome
-    ? allNavItems
-    : allNavItems.filter((item) =>
-        ["Home", "Projects", "Contact"].includes(item.name)
-      );
+  const handleNavClick = (item) => {
+    closeMobileMenu();
+
+    if (item.scrollId) {
+      const el = document.getElementById(item.scrollId);
+      if (el) lenis.scrollTo(el);
+      else navigate("/", { state: { scrollToId: item.scrollId } });
+    } else {
+      navigate(item.path);
+    }
+  };
+
+  const closeMobileMenu = () => {
+    if (menuRef.current.classList.contains("translate-x-0")) {
+      gsap.to(menuRef.current, {
+        x: "100%",
+        duration: 0.5,
+        ease: "power2.inOut",
+      });
+      menuRef.current.classList.remove("translate-x-0");
+      setMenuOpen(false);
+    }
+  };
+
+  const handleMenuToggle = () => {
+    const isOpen = menuRef.current.classList.contains("translate-x-0");
+
+    gsap.to(menuRef.current, {
+      x: isOpen ? "100%" : "0%",
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+
+    menuRef.current.classList.toggle("translate-x-0");
+    setMenuOpen(!isOpen);
+  };
 
   useEffect(() => {
     gsap.to(logoRef.current, {
@@ -56,47 +87,9 @@ const Header = ({ isHome }) => {
     });
   }, []);
 
-  const closeMobileMenu = () => {
-    if (menuRef.current.classList.contains("translate-x-0")) {
-      gsap.to(menuRef.current, {
-        x: "100%",
-        duration: 0.5,
-        ease: "power2.inOut",
-      });
-      menuRef.current.classList.remove("translate-x-0");
-      setMenuOpen(false);
-    }
-  };
-
-  const handleMenuToggle = () => {
-    const isOpen = menuRef.current.classList.contains("translate-x-0");
-
-    gsap.to(menuRef.current, {
-      x: isOpen ? "100%" : "0%",
-      duration: 0.5,
-      ease: "power2.inOut",
-    });
-
-    menuRef.current.classList.toggle("translate-x-0");
-    setMenuOpen(!isOpen);
-  };
-
-  const handleNavClick = (item) => {
-    closeMobileMenu(); // always close if open
-
-    if (isHome && item.id) {
-      const el = document.getElementById(item.id);
-      if (el) lenis.scrollTo(el);
-    } else if (item.id === "footer") {
-      navigate("/", { state: { scrollToId: "footer" } });
-    } else {
-      navigate(item.path);
-    }
-  };
-
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md text-white px-[5vw] py-4 flex justify-between items-center">
+      <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md text-white px-[5vw] py-5 flex justify-between items-center">
         {/* Logo */}
         <div
           ref={logoRef}
@@ -112,19 +105,45 @@ const Header = ({ isHome }) => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8 text-sm uppercase">
-          <NavLinks
-            isHome={isHome}
-            navItems={navItems}
-            handleNavClick={handleNavClick}
-          />
+          {navLinks.map((item) => {
+            const isActive =
+              item.path === location.pathname ||
+              (item.scrollId &&
+                location.pathname === "/" &&
+                location.state?.scrollToId === item.scrollId);
+
+            return (
+              <span
+                key={item.name}
+                onClick={() => handleNavClick(item)}
+                className={`relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
+  after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 
+  after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
+  ${isActive ? "text-cyan-400 after:w-full" : ""}`}
+              >
+                {item.name}
+              </span>
+            );
+          })}
         </nav>
 
         {/* Social Icons */}
         <div className="hidden md:flex gap-3 text-gray-400 items-center">
-          <a href="mailto:contact@ketupatel.com" target="_blank">
-            <FaEnvelope className="cursor-pointer" />
+          <a
+            href="mailto:contact@ketupatel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaEnvelope
+              ref={(el) => (socialsRef.current[2] = el)}
+              className="cursor-pointer"
+            />
           </a>
-          <a href="https://www.instagram.com/k2__patel_/" target="_blank">
+          <a
+            href="https://www.instagram.com/k2__patel_/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram
               ref={(el) => (socialsRef.current[0] = el)}
               className="cursor-pointer"
@@ -133,6 +152,7 @@ const Header = ({ isHome }) => {
           <a
             href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedinIn
               ref={(el) => (socialsRef.current[1] = el)}
@@ -146,81 +166,76 @@ const Header = ({ isHome }) => {
           className="md:hidden w-8 h-8 relative cursor-pointer flex items-center justify-center"
           onClick={handleMenuToggle}
         >
-          <svg
-            className="w-6 h-6 stroke-white"
-            viewBox="0 0 24 24"
-            fill="none"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line
-              x1="3"
-              y1="6"
-              x2="21"
-              y2="6"
-              className="transition-transform origin-center"
-              style={{
-                transform: menuOpen
-                  ? "rotate(45deg) translate(0px, 6px)"
-                  : "rotate(0) translate(0, 0)",
-                transition: "transform 0.3s ease",
-              }}
-            />
-            <line
-              x1="3"
-              y1="12"
-              x2="21"
-              y2="12"
-              className="transition-opacity"
-              style={{
-                opacity: menuOpen ? 0 : 1,
-                transition: "opacity 0.3s ease",
-              }}
-            />
-            <line
-              x1="3"
-              y1="18"
-              x2="21"
-              y2="18"
-              className="transition-transform origin-center"
-              style={{
-                transform: menuOpen
-                  ? "rotate(-45deg) translate(0px, -6px)"
-                  : "rotate(0) translate(0, 0)",
-                transition: "transform 0.3s ease",
-              }}
-            />
-          </svg>
+          <div className="space-y-1.5">
+            <div
+              className={`w-6 h-0.5 bg-white transform transition duration-300 ${
+                menuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            ></div>
+            <div
+              className={`w-6 h-0.5 bg-white transition-opacity duration-300 ${
+                menuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            ></div>
+            <div
+              className={`w-6 h-0.5 bg-white transform transition duration-300 ${
+                menuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            ></div>
+          </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 w-full h-screen bg-black text-white z-20 flex flex-col justify-center items-center text-3xl gap-6 translate-x-full"
+        className="fixed top-0 right-0 w-full h-screen bg-black text-white z-40 flex flex-col justify-center items-center text-3xl gap-6 translate-x-full"
       >
         <nav className="flex flex-col items-center gap-6 text-lg uppercase">
-          <NavLinks
-            isHome={isHome}
-            navItems={navItems}
-            handleNavClick={handleNavClick}
-          />
+          {navLinks.map((item) => {
+            const isActive =
+              item.path === location.pathname ||
+              (item.scrollId &&
+                location.pathname === "/" &&
+                location.state?.scrollToId === item.scrollId);
+
+            return (
+              <span
+                key={item.name}
+                onClick={() => handleNavClick(item)}
+                className={`relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
+  after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
+  after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
+  ${isActive ? "text-cyan-400 after:w-full" : ""}`}
+              >
+                {item.name}
+              </span>
+            );
+          })}
         </nav>
 
         {/* Mobile Social Icons */}
-        <div className="flex gap-6 text-2xl mt-6">
-          <a href="mailto:contact@ketupatel.com" target="_blank">
-            <FaEnvelope className="cursor-pointer text-gray-400 hover:text-white" />
+        <div className="flex gap-6 text-2xl mt-6 text-gray-400">
+          <a
+            href="mailto:contact@ketupatel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaEnvelope className="hover:text-white transition" />
           </a>
-          <a href="https://www.instagram.com/k2__patel_/" target="_blank">
-            <FaInstagram className="cursor-pointer text-gray-400 hover:text-white" />
+          <a
+            href="https://www.instagram.com/k2__patel_/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="hover:text-white transition" />
           </a>
           <a
             href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
             target="_blank"
+            rel="noopener noreferrer"
           >
-            <FaLinkedinIn className="cursor-pointer text-gray-400 hover:text-white" />
+            <FaLinkedinIn className="hover:text-white transition" />
           </a>
         </div>
       </div>

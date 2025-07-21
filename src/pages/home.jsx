@@ -8,10 +8,8 @@ import Footer from "../component/footer";
 import Header from "../component/header";
 import { Hero } from "../component/hero";
 import Services from "../component/Services";
-import SkillGrid from "../component/skills";
 import WorkSample from "../component/WorkSample";
 import CustomCursor from "../component/CustomCursor";
-import WorkExperience from "../component/WorkExperience";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,11 +48,9 @@ function Home() {
 
   return (
     <>
-      <Header isHome={true} />
+      <Header />
       <Hero />
       <WorkSample />
-      <SkillGrid />
-      <WorkExperience/>
       <Benefits />
       <Services />
       <Footer />
