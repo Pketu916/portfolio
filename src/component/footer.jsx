@@ -76,28 +76,44 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-          <div className="flex flex-col flex-wrap md:content-center content-start">
-            <h3 className="text-2xl font-semibold text-cyan-400 mb-6">
-              Quick Links
-            </h3>
-            <ul className="text-gray-300 space-y-3 text-lg">
-              <li>
-                <Link
-                  to="/"
-                  className="hover:text-white transition-all duration-300"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/projects"
-                  className="hover:text-white transition-all duration-300"
-                >
-                  Projects
-                </Link>
-              </li>
-            </ul>
+        <div className="flex flex-col flex-wrap md:content-center content-start">
+          <h3 className="text-2xl font-semibold text-cyan-400 mb-6">
+            Quick Links
+          </h3>
+          <ul className="text-gray-300 space-y-3 text-lg">
+            <li>
+              <Link
+                to="/"
+                className="hover:text-white transition-all duration-300"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/projects"
+                className="hover:text-white transition-all duration-300"
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className="hover:text-white transition-all duration-300"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services"
+                className="hover:text-white transition-all duration-300"
+              >
+                Services
+              </Link>
+            </li>
+          </ul>
         </div>
 
         {/* Contact Form */}

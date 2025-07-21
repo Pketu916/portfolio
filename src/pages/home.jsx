@@ -50,9 +50,9 @@ function Home() {
     <>
       <Header />
       <Hero />
+      <Services />
       <WorkSample />
       <Benefits />
-      <Services />
       <Footer />
       <CustomCursor />
     </>
