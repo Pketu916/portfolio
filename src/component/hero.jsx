@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Marquee from "./Marquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,12 +100,12 @@ export const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative w-full h-[100dvh] bg-gradient-to-b from-[#0f0f0f] via-black to-[#0f0f0f] overflow-hidden"
+      className="relative w-full h-[calc(100dvh-68px)] bg-gradient-to-b from-[#0f0f0f] via-black to-[#0f0f0f] overflow-hidden"
     >
-      {/* Content */}
+      {/* Hero Content */}
       <div
         ref={heroContentRef}
-        className="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white px-4 flex flex-col items-center gap-4 w-[90%]"
+        className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white px-4 flex flex-col items-center gap-4 w-[90%]"
       >
         <h1
           ref={headingRef}
@@ -132,6 +133,11 @@ export const Hero = () => {
         >
           Let’s Connect
         </a>
+      </div>
+
+      {/* Marquee — not affected by ScrollTrigger */}
+      <div className="absolute bottom-0 w-full">
+        <Marquee />
       </div>
     </section>
   );

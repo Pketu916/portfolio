@@ -10,6 +10,7 @@ import { Hero } from "../component/hero";
 import Services from "../component/Services";
 import WorkSample from "../component/WorkSample";
 import CustomCursor from "../component/CustomCursor";
+import Marquee from "../component/Marquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,11 +40,15 @@ function Home() {
         return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
       },
       getBoundingClientRect() {
-        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
       },
       fixedMarkers: true,
     });
-
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import projectData from "../component/projectData"; // same array as used in Wor
 import Header from "../component/header";
 import Footer from "../component/footer";
 import CustomCursor from "../component/CustomCursor";
+import Marquee from "../component/Marquee";
 
 const AllProjects = () => {
   const [filter, setFilter] = useState("All");
@@ -104,8 +105,9 @@ const AllProjects = () => {
           ))}
         </div>
       </div>
+      <Marquee />
       <Footer />
-            <CustomCursor/>
+      <CustomCursor />
     </>
   );
 };
