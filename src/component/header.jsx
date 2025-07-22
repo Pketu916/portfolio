@@ -89,99 +89,103 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md text-white px-[5vw] py-5 flex justify-between items-center">
+      <header className="sticky top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md text-white px-[5vw] py-5 ">
         {/* Logo */}
-        <div
-          ref={logoRef}
-          className="flex items-center gap-2 cursor-pointer select-none"
-        >
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold">Ketu</span>
-            <span ref={patelRef} className="text-cyan-400 font-bold">
-              Patel
-            </span>
-          </Link>
-        </div>
+        <div className="container">
+          <div className="flex justify-between items-center">
+            <div
+              ref={logoRef}
+              className="flex items-center gap-2 cursor-pointer select-none"
+            >
+              <Link to="/" className="flex items-center gap-2">
+                <span className="text-xl font-bold">Ketu</span>
+                <span ref={patelRef} className="text-cyan-400 font-bold">
+                  Patel
+                </span>
+              </Link>
+            </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8 text-sm uppercase">
-          {navLinks.map((item) => {
-            const isActive =
-              item.path === location.pathname ||
-              (item.scrollId &&
-                location.pathname === "/" &&
-                location.state?.scrollToId === item.scrollId);
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex gap-8 text-sm uppercase">
+              {navLinks.map((item) => {
+                const isActive =
+                  item.path === location.pathname ||
+                  (item.scrollId &&
+                    location.pathname === "/" &&
+                    location.state?.scrollToId === item.scrollId);
 
-            return (
-              <span
-                key={item.name}
-                onClick={() => handleNavClick(item)}
-                className={`relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
+                return (
+                  <span
+                    key={item.name}
+                    onClick={() => handleNavClick(item)}
+                    className={`relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
   after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 
   after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
   ${isActive ? "text-cyan-400 after:w-full" : ""}`}
+                  >
+                    {item.name}
+                  </span>
+                );
+              })}
+            </nav>
+
+            {/* Social Icons */}
+            <div className="hidden md:flex gap-3 text-gray-400 items-center">
+              <a
+                href="mailto:contact@ketupatel.com"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {item.name}
-              </span>
-            );
-          })}
-        </nav>
+                <FaEnvelope
+                  ref={(el) => (socialsRef.current[2] = el)}
+                  className="cursor-pointer"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/k2__patel_/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram
+                  ref={(el) => (socialsRef.current[0] = el)}
+                  className="cursor-pointer"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedinIn
+                  ref={(el) => (socialsRef.current[1] = el)}
+                  className="cursor-pointer"
+                />
+              </a>
+            </div>
 
-        {/* Social Icons */}
-        <div className="hidden md:flex gap-3 text-gray-400 items-center">
-          <a
-            href="mailto:contact@ketupatel.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaEnvelope
-              ref={(el) => (socialsRef.current[2] = el)}
-              className="cursor-pointer"
-            />
-          </a>
-          <a
-            href="https://www.instagram.com/k2__patel_/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram
-              ref={(el) => (socialsRef.current[0] = el)}
-              className="cursor-pointer"
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedinIn
-              ref={(el) => (socialsRef.current[1] = el)}
-              className="cursor-pointer"
-            />
-          </a>
-        </div>
-
-        {/* Mobile Menu Icon */}
-        <div
-          className="md:hidden w-8 h-8 relative cursor-pointer flex items-center justify-center"
-          onClick={handleMenuToggle}
-        >
-          <div className="space-y-1.5">
+            {/* Mobile Menu Icon */}
             <div
-              className={`w-6 h-0.5 bg-white transform transition duration-300 ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            ></div>
-            <div
-              className={`w-6 h-0.5 bg-white transition-opacity duration-300 ${
-                menuOpen ? "opacity-0" : "opacity-100"
-              }`}
-            ></div>
-            <div
-              className={`w-6 h-0.5 bg-white transform transition duration-300 ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            ></div>
+              className="md:hidden w-8 h-8 relative cursor-pointer flex items-center justify-center"
+              onClick={handleMenuToggle}
+            >
+              <div className="space-y-1.5">
+                <div
+                  className={`w-6 h-0.5 bg-white transform transition duration-300 ${
+                    menuOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                ></div>
+                <div
+                  className={`w-6 h-0.5 bg-white transition-opacity duration-300 ${
+                    menuOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                ></div>
+                <div
+                  className={`w-6 h-0.5 bg-white transform transition duration-300 ${
+                    menuOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </header>

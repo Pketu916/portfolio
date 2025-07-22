@@ -96,7 +96,6 @@ const Skills = () => {
         y: 0,
         rotate: 0,
         scale: 1,
-        // ease: "elastic.out(1, 0.4)",
         ease: "power3.out",
         duration: 1,
       });
@@ -106,12 +105,11 @@ const Skills = () => {
   const toolboxItems = [
     ["React.js", "https://cdn.worldvectorlogo.com/logos/react-2.svg"],
     ["Node.js", "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"],
-   ["webflow", "https://www.svgrepo.com/show/354543/webflow.svg"],
+    ["Webflow", "https://www.svgrepo.com/show/354543/webflow.svg"],
     ["Tailwind CSS", "https://www.svgrepo.com/show/374118/tailwind.svg"],
     ["JavaScript", "https://cdn.worldvectorlogo.com/logos/logo-javascript.svg"],
     ["GSAP", "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg"],
     ["TypeScript", "https://cdn.worldvectorlogo.com/logos/typescript.svg"],
-    // ["MongoDB", "https://cdn-icons-png.flaticon.com/512/919/919836.png"],
     ["CSS", "https://cdn.worldvectorlogo.com/logos/css-3.svg"],
     ["GitHub", "https://cdn-icons-png.flaticon.com/512/733/733553.png"],
     ["Figma", "https://cdn-icons-png.flaticon.com/512/5968/5968705.png"],
@@ -120,49 +118,43 @@ const Skills = () => {
   ];
 
   return (
-    <section
-      className="bg-black flex flex-col items-center relative overflow-hidden py-8 md:py-24"
-      id="toolbox"
-    >
-      <div className="custom-container">
-        <div className="w-[70vw] flex flex-col items-start gap-[5vw]">
-          <h2
-            className="text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 
-text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse w-full"
-          >
-            My Toolbox
-          </h2>
+   <section
+  id="toolbox"
+  className="bg-black flex flex-col items-center relative overflow-hidden py-12 md:py-24 px-4 sm:px-6 lg:px-12"
+>
+  <h2 className="text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse mb-12">
+    My Toolbox
+  </h2>
 
-          <div
-            ref={gridRef}
-            className="grid grid-cols-3 sm:grid-cols-4 gap-6 w-full relative"
-          >
-            {toolboxItems.map(([label, icon], i) => (
-              <div
-                key={i}
-                className="tool-card gap-[1vw] w-[22vw] md:w-[11vw] rounded-[1vw] bg-white shadow-[0_0.5vw_1.5vw_rgba(0,255,255,0.2)] flex flex-col items-center justify-center cursor-grab select-none transition-transform"
-              >
-                <img
-                  src={icon}
-                  alt={label}
-                  className="w-[60%] pointer-events-none"
-                />
-                <span className="text-[2vw] md:text-[1vw] font-semibold text-center text-black">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div
-            ref={controllerRef}
-            className="w-[10vw] h-[10vw] md:w-[5vw] md:h-[5vw] rounded-full bg-cyan-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 cursor-grab shadow-[0_0_1vw_rgba(0,0,0,0.3)] flex items-center justify-center text-white font-bold text-[1vw] select-none"
-          >
-            Drag
-          </div>
-        </div>
+  <div
+    ref={gridRef}
+    className="grid grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-[1200px]"
+  >
+    {toolboxItems.map(([label, icon], i) => (
+      <div
+        key={i}
+        className="tool-card aspect-[4/3] bg-white rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.1)] flex flex-col items-center justify-center p-4 transition-transform hover:scale-105"
+      >
+        <img
+          src={icon}
+          alt={label}
+          className="w-1/2 sm:w-2/3 pointer-events-none"
+        />
+        <span className="text-xs sm:text-sm md:text-base font-semibold text-center text-black mt-3">
+          {label}
+        </span>
       </div>
-    </section>
+    ))}
+  </div>
+
+  <div
+    ref={controllerRef}
+    className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-cyan-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 cursor-grab shadow-xl flex items-center justify-center text-white font-bold text-sm md:text-base select-none"
+  >
+    Drag
+  </div>
+</section>
+
   );
 };
 
