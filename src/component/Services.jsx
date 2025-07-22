@@ -67,54 +67,59 @@ const Services = () => {
     });
   }, []);
 
-  const services = [
-    {
-      title: "Web Development",
-      description: "Modern and responsive websites using React, Next.js, and Tailwind CSS.",
-      bg: "from-purple-600 to-pink-500",
-      titleColor: "text-pink-100",
-    },
-    {
-      title: "UI/UX Design",
-      description: "User-first interfaces with clean structure and engaging interactions.",
-      bg: "from-green-500 to-emerald-500",
-      titleColor: "text-emerald-100",
-    },
-    {
-      title: "Motion & Animation",
-      description: "Stunning motion UI with GSAP, Framer Motion, and Lottie.",
-      bg: "from-yellow-400 to-orange-500",
-      titleColor: "text-yellow-100",
-    },
-    {
-      title: "Backend & APIs",
-      description: "Secure and scalable APIs using Node.js, Express, and MongoDB.",
-      bg: "from-cyan-500 to-blue-600",
-      titleColor: "text-cyan-100",
-    },
-    {
-      title: "Performance Optimization",
-      description: "Boosting load times, SEO, and Lighthouse scores across projects.",
-      bg: "from-rose-500 to-red-500",
-      titleColor: "text-red-100",
-    },
-    {
-      title: "Deployment & CI/CD",
-      description: "Automated pipelines and seamless cloud deployment with Vercel & Netlify.",
-      bg: "from-indigo-600 to-blue-500",
-      titleColor: "text-indigo-100",
-    },
-  ];
+const services = [
+  {
+    title: "Full Stack Web Applications",
+    description: "I build full websites and apps using tools like React, Next.js, and Node.js. Whether it's a simple dashboard or a full product, I handle both front and back end.",
+    bg: "from-yellow-400 to-orange-500",
+    titleColor: "text-yellow-100",
+  },
+  {
+    title: "Webflow Development",
+    description: "I create clean, fast, and mobile-friendly websites using Webflow. From landing pages to full websites with CMS and animations, everything is custom-made to match your brand.",
+    bg: "from-purple-600 to-pink-500",
+    titleColor: "text-pink-100",
+  },
+  {
+    title: "Custom Code & Integrations",
+    description: "Need extra features in Webflow? I can add custom code, connect APIs, and make your site do more than what Webflow offers out of the box.",
+    bg: "from-green-500 to-emerald-500",
+    titleColor: "text-emerald-100",
+  },
+  {
+    title: "UI/UX Design",
+    description: "I design websites that are easy to use and look great. The goal is always a smooth user experience that feels good on both desktop and mobile.",
+    bg: "from-cyan-500 to-blue-600",
+    titleColor: "text-cyan-100",
+  },
+  {
+    title: "Performance & SEO Optimization",
+    description: "I make sure your website loads fast, ranks well on Google, and works perfectly on all devices. Better speed means better results.",
+    bg: "from-rose-500 to-red-500",
+    titleColor: "text-red-100",
+  },
+  {
+    title: "Hosting & Deployment",
+    description: "I take care of getting your site online using Webflow, Vercel, or Netlify. Fast, secure, and with everything set up the right way.",
+    bg: "from-indigo-600 to-blue-500",
+    titleColor: "text-indigo-100",
+  },
+];
+
+
 
   return (
-      <section
+    <section
       className="py-8 md:py-24 px-[5vw] bg-gradient-to-br from-[#0f0f0f] via-black to-[#0f0f0f] text-white"
       id="services"
     >
       <div className="text-center mb-8 md:mb-16">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-cyan-400">My Services</h2>
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-cyan-400">
+          My Services
+        </h2>
         <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
-          I craft full-stack experiences that blend design, performance, and modern development practices.
+          I craft full-stack experiences that blend design, performance, and
+          modern development practices.
         </p>
       </div>
 
