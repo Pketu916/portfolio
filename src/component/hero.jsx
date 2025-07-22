@@ -105,7 +105,7 @@ export const Hero = () => {
       {/* Hero Content */}
       <div
         ref={heroContentRef}
-        className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white px-4 flex flex-col items-center gap-4 w-[90%]"
+        className="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white px-4 flex flex-col items-center gap-4 w-[90%]"
       >
         <h1
           ref={headingRef}
