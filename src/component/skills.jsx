@@ -128,12 +128,12 @@ const Skills = () => {
 
   <div
     ref={gridRef}
-    className="grid grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-[1200px]"
+    className="grid grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-[650px]"
   >
     {toolboxItems.map(([label, icon], i) => (
       <div
         key={i}
-        className="tool-card aspect-[4/3] bg-white rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.1)] flex flex-col items-center justify-center p-4 transition-transform hover:scale-105"
+        className="tool-card bg-white rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.1)] flex flex-col items-center justify-center p-3 transition-all hover:scale-105"
       >
         <img
           src={icon}
