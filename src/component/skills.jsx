@@ -87,7 +87,7 @@ const Skills = () => {
         y: `+=${velocityY}`,
         rotate: (Math.random() - 0.5) * 40,
         scale: 1.1,
-        ease: "power3.out",
+        ease: "power4.out",
         duration: 1,
       });
 
@@ -96,7 +96,7 @@ const Skills = () => {
         y: 0,
         rotate: 0,
         scale: 1,
-        ease: "power3.out",
+        ease: "power4.out",
         duration: 1,
       });
     }

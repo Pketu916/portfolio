@@ -59,7 +59,7 @@ const WorkSample = () => {
           y: 0,
           stagger: 0.1,
           duration: 0.5,
-          ease: "power3.out",
+          ease: "power4.out",
           scrollTrigger: {
             trigger: section,
             start: "top 85%",

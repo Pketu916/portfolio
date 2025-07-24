@@ -14,13 +14,13 @@ const Benefits = () => {
         el,
         {
           opacity: 0,
-          y: 60,
-          scale: 0.95,
+          y: 120,
+          // scale: 0.95,
         },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
+          // scale: 1,
           duration: 0.7,
           ease: "power4.out",
           scrollTrigger: {

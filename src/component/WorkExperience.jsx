@@ -11,15 +11,16 @@ const Experience = () => {
   useEffect(() => {
     const cards = gsap.utils.toArray(".exp-card");
 
-    cards.forEach((card) => {
+    cards.forEach((card,index) => {
       gsap.fromTo(
         card,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 100 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 1,
           ease: "power4.out",
+            delay: index * 0.1,
           scrollTrigger: {
             trigger: card,
             start: "top 85%",

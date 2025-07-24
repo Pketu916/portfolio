@@ -14,8 +14,8 @@ const CustomCursor = () => {
       gsap.to(outer, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.25,
-        ease: "power4.out",
+        duration:0.5,
+        ease: "power4.Out",
       });
 
       // Fast follow for center dot
