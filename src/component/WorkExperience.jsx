@@ -14,16 +14,17 @@ const Experience = () => {
     cards.forEach((card,index) => {
       gsap.fromTo(
         card,
-        { opacity: 0, y: 100 },
+        { opacity: 0, y: 120 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 1.5,
           ease: "power4.out",
             delay: index * 0.1,
           scrollTrigger: {
             trigger: card,
             start: "top 85%",
+            end: "top 50%",
             toggleActions: "play none none reverse",
           },
         }

@@ -11,6 +11,7 @@ import Services from "../component/Services";
 import WorkSample from "../component/WorkSample";
 import CustomCursor from "../component/CustomCursor";
 import Marquee from "../component/Marquee";
+import Faq from "../component/Faq";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,7 @@ function Home() {
       duration: 1.2,
       gestureDirection: "vertical",
       smoothTouch: true,
-      wheelMultiplier: 1.1, // Optional: boost scroll speed on wheel
+      wheelMultiplier: 0.5, // Optional: boost scroll speed on wheel
     });
 
     // Sync ScrollTrigger with Lenis
@@ -58,6 +59,7 @@ function Home() {
       <Services />
       <WorkSample />
       <Benefits />
+      <Faq/>
       <Footer />
       <CustomCursor />
     </>

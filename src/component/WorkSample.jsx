@@ -25,8 +25,8 @@ const WorkSample = () => {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 1.3,
-          ease: "expo.out",
+          duration: 1.5,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: section,
             start: "top 90%",
@@ -37,11 +37,11 @@ const WorkSample = () => {
 
       gsap.fromTo(
         text,
-        { opacity: 0, y: 80 },
+        { opacity: 0, y: 120 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 1.5,
           ease: "power4.out",
           scrollTrigger: {
             trigger: section,
@@ -58,7 +58,7 @@ const WorkSample = () => {
           opacity: 1,
           y: 0,
           stagger: 0.1,
-          duration: 0.5,
+          duration: 0.3,
           ease: "power4.out",
           scrollTrigger: {
             trigger: section,

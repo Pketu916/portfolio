@@ -105,7 +105,7 @@ export const Hero = () => {
       {/* Hero Content */}
       <div
         ref={heroContentRef}
-        className="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white px-2 md:px-4 flex flex-col items-center gap-4 w-[100%]"
+        className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white px-2 md:px-4 flex flex-col items-center gap-4 w-[100%]"
       >
         <h1
           ref={headingRef}
@@ -129,7 +129,7 @@ export const Hero = () => {
 
         <a
           href="mailto:pketu916@gmail.com?subject=Let’s%20Build%20Something"
-          className="mt-6 px-6 py-2 text-base sm:text-lg bg-cyan-500 hover:bg-cyan-600 transition rounded-full font-semibold"
+          className=" px-6 py-2 text-base sm:text-lg bg-cyan-500 hover:bg-cyan-600 transition rounded-full font-semibold"
         >
           Let’s Connect
         </a>

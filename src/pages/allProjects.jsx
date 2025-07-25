@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import projectData from "../component/projectData"; // same array as used in WorkSample
 import Header from "../component/header";
 import Footer from "../component/footer";
 import CustomCursor from "../component/CustomCursor";
 import Marquee from "../component/Marquee";
+import { gsap } from "gsap";
+
 
 const AllProjects = () => {
   const [filter, setFilter] = useState("All");
@@ -18,6 +20,35 @@ const AllProjects = () => {
       ? projectData
       : projectData.filter((p) => p.technologies.includes(filter));
 
+  const projectCardRef = useRef([]);
+  projectCardRef.current = [];
+
+  useEffect(() => {
+    projectCardRef.current.forEach((card, index) => {
+      if (!card) return;
+
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 300 , x:300 },
+        {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          duration: 0.8,
+          delay: index * 0.1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            end: "top 60%", // optional for smoother control
+            toggleActions: "play none none reverse",
+            // markers:true,
+          },
+        }
+      );
+    });
+  }, [filteredProjects]); // re-run when filter changes
+
   return (
     <>
       <Header />
@@ -28,10 +59,11 @@ const AllProjects = () => {
           </h1>
 
           {/* Filter buttons */}
-          <div className="flex flex-wrap gap-3 md:gap-4 justify-center mb-10">
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-center mb-10">
             {technologies.map((tech, idx) => (
               <button
                 key={idx}
+                
                 onClick={() => setFilter(tech)}
                 className={`px-4 py-2 rounded-full border text-sm ${
                   filter === tech
@@ -46,10 +78,11 @@ const AllProjects = () => {
 
           {/* Project Grid */}
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project , idx) => (
               <div
                 key={project.id}
                 className="bg-[#111] rounded-2xl p-6 shadow-xl border border-gray-800 hover:shadow-cyan-500/20 transition"
+                ref={(el) => (projectCardRef.current[idx] = el)}
               >
                 <img
                   src={project.imageUrl}

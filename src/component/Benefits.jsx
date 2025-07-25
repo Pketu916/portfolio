@@ -21,11 +21,14 @@ const Benefits = () => {
           opacity: 1,
           y: 0,
           // scale: 1,
-          duration: 0.7,
-          ease: "power4.out",
+          duration: 0.8,
+          ease: "power4.in",
           scrollTrigger: {
             trigger: el,
             start: "top 90%",
+            end: "top 70%",
+            //  markers: true,
+            toggleActions: "play none none reverse",
           },
         }
       );

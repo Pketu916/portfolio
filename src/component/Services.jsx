@@ -13,56 +13,20 @@ const Services = () => {
 
       gsap.fromTo(
         card,
-        { opacity: 0, y: 120 },
+        { opacity: 0, y: 100 },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
           delay: index * 0.1,
-          ease: "power4.out",
+          ease: "power4.in",
           scrollTrigger: {
             trigger: card,
             start: "top 85%",
+             end: "top 50%",
           },
         }
       );
-
-      // // Hover effect
-      // const handleMouseMove = (e) => {
-      //   const rect = card.getBoundingClientRect();
-      //   const x = e.clientX - rect.left;
-      //   const y = e.clientY - rect.top;
-      //   const centerX = rect.width / 2;
-      //   const centerY = rect.height / 2;
-      //   const rotateX = -(y - centerY) / 10;
-      //   const rotateY = (x - centerX) / 10;
-
-      //   gsap.to(card, {
-      //     rotateX,
-      //     rotateY,
-      //     scale: 1.04,
-      //     ease: "power4.out",
-      //     duration: 0.5,
-      //   });
-      // };
-
-      // const resetCard = () => {
-      //   gsap.to(card, {
-      //     rotateX: 0,
-      //     rotateY: 0,
-      //     scale: 1,
-      //     ease: "power4.out",
-      //     duration: 0.5,
-      //   });
-      // };
-
-      // card.addEventListener("mousemove", handleMouseMove);
-      // card.addEventListener("mouseleave", resetCard);
-
-      // return () => {
-      //   card.removeEventListener("mousemove", handleMouseMove);
-      //   card.removeEventListener("mouseleave", resetCard);
-      // };
     });
   }, []);
 
