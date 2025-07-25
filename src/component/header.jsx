@@ -89,7 +89,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md text-white px-[5vw] py-5 ">
+      <header
+        className="sticky top-0 w-full z-50 bg-black/90 backdrop-blur-md text-white px-[5vw] py-5 "
+      >
         {/* Logo */}
         <div className="container">
           <div className="flex justify-between items-center">

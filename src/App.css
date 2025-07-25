@@ -214,7 +214,5 @@ body::-webkit-scrollbar {
 
 html,
 body {
-  height: auto;
-  overflow: auto;
   scroll-behavior: auto !important;
 }
