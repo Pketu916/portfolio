@@ -22,8 +22,8 @@ function Home() {
       duration: 1.2,
       gestureDirection: "vertical",
       smoothTouch: true,
-      wheelMultiplier: 0.5,
-      touchMultiplier: 0.5,
+      wheelMultiplier: 0.3,
+      touchMultiplier: 0.1,
     });
 
     // Sync ScrollTrigger with Lenis
