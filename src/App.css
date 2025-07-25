@@ -30,11 +30,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  overscroll-behavior-y: none !important;
-}
-
 /* ===============================
    Typography Classes
 ================================= */
@@ -207,11 +202,19 @@ body::-webkit-scrollbar {
   background-position: center;
 }
 
-.container{
+.container {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
 }
+
 /* html{
   cursor: none;
 } */
+
+html,
+body {
+  height: auto;
+  overflow: auto;
+  scroll-behavior: auto !important;
+}

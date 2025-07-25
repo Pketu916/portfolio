@@ -10,7 +10,7 @@ import ScrollToTop from "./utils/ScrollToTop";
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* ✅ Moved inside Router */}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<AllProjects />} />

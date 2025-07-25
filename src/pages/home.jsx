@@ -22,7 +22,7 @@ function Home() {
       duration: 1.2,
       gestureDirection: "vertical",
       smoothTouch: true,
-      wheelMultiplier: 0.3,
+      wheelMultiplier: 0.4,
       touchMultiplier: 0.1,
     });
 

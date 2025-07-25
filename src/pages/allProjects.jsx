@@ -5,6 +5,9 @@ import Footer from "../component/footer";
 import CustomCursor from "../component/CustomCursor";
 import Marquee from "../component/Marquee";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 const AllProjects = () => {
@@ -24,30 +27,68 @@ const AllProjects = () => {
   projectCardRef.current = [];
 
   useEffect(() => {
+    // Clear previous ScrollTriggers
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
     projectCardRef.current.forEach((card, index) => {
       if (!card) return;
 
+      const image = card.querySelector("img");
+
+      // Parallax effect on image
+      if (image) {
+        gsap.to(image, {
+          y: -40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            end: "bottom 30%",
+            scrub: true,
+          },
+        });
+      }
+
+      // Slight float effect on card
+      gsap.to(card, {
+        y: 10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 90%",
+          end: "bottom 30%",
+          scrub: true,
+        },
+      });
+
+      // Entry animation
       gsap.fromTo(
         card,
-        { opacity: 0, y: 300 , x:300 },
+        { opacity: 0, y: 100 },
         {
           opacity: 1,
           y: 0,
-          x: 0,
           duration: 0.8,
-          delay: index * 0.1,
-          ease: "power4.out",
+          delay: index * 0.2,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 85%",
-            end: "top 60%", // optional for smoother control
+            start: "top 90%",
+            end: "top 50%",
             toggleActions: "play none none reverse",
-            // markers:true,
           },
         }
       );
     });
-  }, [filteredProjects]); // re-run when filter changes
+
+    // Refresh trigger positions
+    ScrollTrigger.refresh();
+
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [filteredProjects]);
 
   return (
     <>
@@ -63,7 +104,6 @@ const AllProjects = () => {
             {technologies.map((tech, idx) => (
               <button
                 key={idx}
-                
                 onClick={() => setFilter(tech)}
                 className={`px-4 py-2 rounded-full border text-sm ${
                   filter === tech
@@ -78,7 +118,7 @@ const AllProjects = () => {
 
           {/* Project Grid */}
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project , idx) => (
+            {filteredProjects.map((project, idx) => (
               <div
                 key={project.id}
                 className="bg-[#111] rounded-2xl p-6 shadow-xl border border-gray-800 hover:shadow-cyan-500/20 transition"

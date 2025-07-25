@@ -13,18 +13,19 @@ const Services = () => {
 
       gsap.fromTo(
         card,
-        { opacity: 0, y: 100 },
+        { opacity: 0, y: 150 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.5,
           delay: index * 0.1,
-          ease: "power4.in",
+          ease: "power4.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 85%",
+            start: "top 90%",
              end: "top 50%",
           },
+          toggleActions: "play none none reverse",
         }
       );
     });

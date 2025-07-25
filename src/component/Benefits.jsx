@@ -26,8 +26,7 @@ const Benefits = () => {
           scrollTrigger: {
             trigger: el,
             start: "top 90%",
-            end: "top 70%",
-            //  markers: true,
+            end: "top 50%",
             toggleActions: "play none none reverse",
           },
         }

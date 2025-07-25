@@ -1,10 +1,10 @@
-import WorkSampleImg from "../assets/AoVi0HG0bEq.png";
-import WorkSample1 from "../assets/AoVi0HG0bEq (1).png";
-import WorkSample2 from "../assets/AoVi0HG0bEq (2).png";
-import WorkSample3 from "../assets/AoVi0HG0bEq (3).png";
-import WorkSample4 from "../assets/AoVi0HG0bEq (5).png";
-import WorkSample5 from "../assets/AoVi0HG0bEq (6).png";
-import WorkSample6 from "../assets/AoVi0HG0bEq (7).png";
+import img2 from "../assets/img2.png";
+import img3 from "../assets/img3.png";
+import img4 from "../assets/img1.png";
+import img5 from "../assets/img5.png";
+import img1 from "../assets/img1.png";
+import img6 from "../assets/img6.png";
+import img7 from "../assets/img7.png";
 import mockup from "../assets/mockup.webp";
 
 const projectData = [
@@ -16,7 +16,7 @@ const projectData = [
     technologies: ["HTML", "CSS", "Swiper.js", "JavaScript"],
     github: "https://github.com/Pketu916/appsRow/tree/main/everX",
     liveDemo: "https://apps-row-8dqs.vercel.app/",
-    imageUrl: WorkSample4,
+    imageUrl: img1,
   },
   {
     id: "2",
@@ -26,7 +26,7 @@ const projectData = [
     technologies: ["HTML", "CSS", "Swiper.js", "JavaScript"],
     github: "https://github.com/Pketu916/appsRow/tree/main/everX",
     liveDemo: "https://everx.vercel.app/",
-    imageUrl: WorkSampleImg,
+    imageUrl: img2,
   },
   {
     id: "3",
@@ -36,7 +36,7 @@ const projectData = [
     technologies: ["HTML", "CSS", "Swiper.js", "JavaScript"],
     github: "https://github.com/Pketu916/appsRow/tree/main/nestora",
     liveDemo: "https://nestora-three.vercel.app/",
-    imageUrl: WorkSample1,
+    imageUrl: img3,
   },
   {
     id: "4",
@@ -46,7 +46,7 @@ const projectData = [
     technologies: ["React.js", "Tailwind CSS", "TypeScript"],
     github: "https://github.com/Pketu916/samarth-e-mobility",
     liveDemo: "https://samarth-e-mobility-xrx4.vercel.app/",
-    imageUrl: WorkSample2,
+    imageUrl: img4,
   },
   {
     id: "5",
@@ -56,7 +56,7 @@ const projectData = [
     technologies: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Pketu916/appsRow/tree/main/dashify",
     liveDemo: "https://apps-row-ioxu.vercel.app/",
-    imageUrl: WorkSample3,
+    imageUrl: img5,
   },
   {
     id: "6",
@@ -66,7 +66,7 @@ const projectData = [
     technologies: ["Webflow", "HTML", "CSS", "javascript"],
     github: null, // No GitHub repo for Webflow
     liveDemo: "https://ketus-trendy-site.webflow.io/",
-    imageUrl: WorkSample6, // <- Replace with the actual image you use
+    imageUrl: img6, // <- Replace with the actual image you use
   },
   {
     id: "7",
@@ -76,7 +76,7 @@ const projectData = [
     technologies: ["Webflow", "HTML", "CSS", "javascript"],
     github: null, // No GitHub repo for Webflow
     liveDemo: "https://ketus-kevin-portfolio-6bca6f.webflow.io/",
-    imageUrl: WorkSample5, // <- Replace with the actual image you use
+    imageUrl: img7, // <- Replace with the actual image you use
   },
   {
     id: "8",
