@@ -22,7 +22,8 @@ function Home() {
       duration: 1.2,
       gestureDirection: "vertical",
       smoothTouch: true,
-      wheelMultiplier: 0.5, // Optional: boost scroll speed on wheel
+      wheelMultiplier: 0.5,
+      touchMultiplier: 0.5,
     });
 
     // Sync ScrollTrigger with Lenis
@@ -59,7 +60,7 @@ function Home() {
       <Services />
       <WorkSample />
       <Benefits />
-      <Faq/>
+      <Faq />
       <Footer />
       <CustomCursor />
     </>
