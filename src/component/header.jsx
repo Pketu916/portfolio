@@ -134,7 +134,7 @@ const Header = () => {
             {/* Social Icons */}
             <div className="hidden md:flex gap-3 text-gray-400 items-center">
               <a
-                href="mailto:contact@ketupatel.com"
+                href="mailto:pketu916@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
