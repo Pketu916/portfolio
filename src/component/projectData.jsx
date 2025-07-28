@@ -1,13 +1,39 @@
 import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.png";
-import img4 from "../assets/img1.png";
+import img4 from "../assets/img4.png";
 import img5 from "../assets/img5.png";
 import img1 from "../assets/img1.png";
 import img6 from "../assets/img6.png";
 import img7 from "../assets/img7.png";
+import img8 from "../assets/img8.png";
+import img9 from "../assets/img9.png";
+import img10 from "../assets/img10.png";
+import img11 from "../assets/img11.png";
+import img12 from "../assets/img12.png";
+import img13 from "../assets/img13.jpg";
+import img14 from "../assets/img14.png";
+import img15 from "../assets/img15.png";
 import mockup from "../assets/mockup.webp";
+import img0 from "../assets/hero-bg.jpg"
 
 const projectData = [
+    {
+    id: "0",
+    name: "My portfolio",
+    description: "Developed a my portfolio website",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JavaScript",
+      "Tailwind CSS",
+      "gsap"
+    ],
+    github: "https://github.com/Pketu916/portfolio",
+    liveDemo: "https://portfolio-liart-ten-31.vercel.app/",
+    imageUrl: img0,
+  },
   {
     id: "1",
     name: "Coza Store",
@@ -64,9 +90,9 @@ const projectData = [
     description:
       "Portfolio website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
     technologies: ["Webflow", "HTML", "CSS", "javascript"],
-    github: null, // No GitHub repo for Webflow
+    github: null,
     liveDemo: "https://ketus-trendy-site.webflow.io/",
-    imageUrl: img6, // <- Replace with the actual image you use
+    imageUrl: img6, 
   },
   {
     id: "7",
@@ -74,9 +100,9 @@ const projectData = [
     description:
       "Portfolio website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
     technologies: ["Webflow", "HTML", "CSS", "javascript"],
-    github: null, // No GitHub repo for Webflow
+    github: null,
     liveDemo: "https://ketus-kevin-portfolio-6bca6f.webflow.io/",
-    imageUrl: img7, // <- Replace with the actual image you use
+    imageUrl: img7, 
   },
   {
     id: "8",
@@ -92,7 +118,7 @@ const projectData = [
     ],
     github: "https://github.com/Pketu916/appsRow/tree/main/user-Management",
     liveDemo: "https://apps-row-zgn2.vercel.app/login",
-    imageUrl: mockup,
+    imageUrl: img8,
   },
   {
     id: "9",
@@ -103,7 +129,7 @@ const projectData = [
     github:
       "https://github.com/Pketu916/frontend-practice/tree/main/react-practice/React-project/banking-app",
     liveDemo: "https://frontend-practice-v9i6.vercel.app/",
-    imageUrl: mockup,
+    imageUrl: img9,
   },
   {
     id: "10",
@@ -114,7 +140,7 @@ const projectData = [
     github:
       "https://github.com/Pketu916/frontend-practice/tree/main/HTML%20%2CCSS%20Project/tailwind%20css/template3",
     liveDemo: "https://task-avesta-o5mg.vercel.app/",
-    imageUrl: mockup,
+    imageUrl: img10,
   },
   {
     id: "11",
@@ -125,7 +151,7 @@ const projectData = [
     github:
       "https://github.com/Pketu916/frontend-practice/tree/main/HTML%20%2CCSS%20Project/tailwind%20css/template1",
     liveDemo: "https://task-avesta-ykmv.vercel.app/",
-    imageUrl: mockup,
+    imageUrl: img11,
   },
   {
     id: "12",
@@ -142,7 +168,7 @@ const projectData = [
     github:
       "https://github.com/Pketu916/frontend-practice/tree/main/react-practice/view.com",
     liveDemo: null,
-    imageUrl: mockup,
+    imageUrl: img12,
   },
   {
     id: "13",
@@ -158,8 +184,28 @@ const projectData = [
     ],
     github: "https://github.com/Pketu916/Doctor-appoinment",
     liveDemo: null,
-    imageUrl: mockup,
+    imageUrl: img13,
   },
+  {
+    id: "14",
+    name: "buildbite",
+    description: "Developed a buildbite landing page",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/Pketu916/appsRow/tree/main/buildbite",
+    liveDemo: "https://apps-row-weld.vercel.app/",
+    imageUrl: img14,
+  },
+    {
+    id: "15",
+    name: "Mijn Vergunning",
+    description:
+      "Website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
+    technologies: ["Webflow", "HTML", "CSS", "javascript"],
+    github: null,
+    liveDemo: "https://ketus-stunning-site.webflow.io/",
+    imageUrl: img15, 
+  },
+
 ];
 
 export default projectData;

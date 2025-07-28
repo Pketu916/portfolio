@@ -36,7 +36,7 @@ const CustomCursor = () => {
       {/* Outer Circle */}
       <div
         ref={outerRef}
-        className="fixed top-0 left-0 z-[40] pointer-events-none"
+        className="fixed top-0 left-0 z-[40] pointer-events-none hidden md:block  "
         style={{
           width: "40px",
           height: "40px",
@@ -53,7 +53,7 @@ const CustomCursor = () => {
       {/* Center Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 z-[9999] pointer-events-none"
+        className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:block"
         style={{
           width: "6px",
           height: "6px",
