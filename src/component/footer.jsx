@@ -40,18 +40,28 @@ const Footer = () => {
     setStatus("sending");
 
     const form = e.target;
-    const data = new FormData(form);
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    };
 
-    const response = await fetch("https://formspree.io/f/mnnzaang", {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: data,
-    });
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycby6OCiidUMNEexI5zQ8J0zPJ4WwiIEYy3oXhJxSKMa3cBNp0xPhCDD3kHR7MtIV_sqE/exec",
+        {
+          method: "POST",
+          mode: "no-cors", // ✅ this is correct
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
-    if (response.ok) {
       setStatus("success");
       form.reset();
-    } else {
+    } catch (error) {
       setStatus("error");
     }
   };
