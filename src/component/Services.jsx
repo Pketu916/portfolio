@@ -13,17 +13,17 @@ const Services = () => {
 
       gsap.fromTo(
         card,
-        { opacity: 0, y: 150 },
+        { opacity: 0, y: 80 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.8,
           delay: index * 0.1,
           ease: "power4.out",
           scrollTrigger: {
             trigger: card,
             start: "top 90%",
-             end: "top 50%",
+            end: "top 60%",
           },
           toggleActions: "play none none reverse",
         }

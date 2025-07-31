@@ -6,6 +6,7 @@ import Skills from "../component/skills";
 import Benefits from "../component/Benefits";
 import CustomCursor from "../component/CustomCursor";
 import Marquee from "../component/Marquee";
+import Faq from "../component/Faq";
 
 export const ServicesPage = () => {
   return (
@@ -15,6 +16,7 @@ export const ServicesPage = () => {
       <Marquee/>
       <Benefits />
       <Skills />
+      <Faq />
       <Footer />
       <CustomCursor />
     </>

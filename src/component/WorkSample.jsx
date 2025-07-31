@@ -20,16 +20,15 @@ const WorkSample = () => {
 
       gsap.fromTo(
         image,
-        { opacity: 0, y: 100, scale: 1.1 },
+        { opacity: 0, y: 80},
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 1.5,
+          duration: 0.8,
           ease: "power4.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 90%",
+            start: "top 85%",
             toggleActions: "play none none reverse",
           },
         }
@@ -37,11 +36,11 @@ const WorkSample = () => {
 
       gsap.fromTo(
         text,
-        { opacity: 0, y: 120 },
+        { opacity: 0, y: 80 },
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
+          duration: 0.8,
           ease: "power4.out",
           scrollTrigger: {
             trigger: section,

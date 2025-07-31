@@ -57,6 +57,7 @@ function Home() {
     <>
       <Header />
       <Hero />
+      <Marquee />
       <Services />
       <WorkSample />
       <Benefits />

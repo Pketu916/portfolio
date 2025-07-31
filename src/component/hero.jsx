@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Marquee from "./Marquee";
+// import Marquee from "./Marquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -136,9 +136,9 @@ export const Hero = () => {
       </div>
 
       {/* Marquee — not affected by ScrollTrigger */}
-      <div className="absolute bottom-0 w-full">
+      {/* <div className="absolute bottom-0 w-full">
         <Marquee />
-      </div>
+      </div> */}
     </section>
   );
 };

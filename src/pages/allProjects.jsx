@@ -42,8 +42,8 @@ const AllProjects = () => {
           ease: "none",
           scrollTrigger: {
             trigger: card,
-            start: "top 90%",
-            end: "bottom 30%",
+            start: "top 95%",
+            end: "bottom 60%",
             scrub: true,
           },
         });
@@ -55,8 +55,8 @@ const AllProjects = () => {
         ease: "none",
         scrollTrigger: {
           trigger: card,
-          start: "top 90%",
-          end: "bottom 30%",
+          start: "top 95%",
+          end: "bottom 60%",
           scrub: true,
         },
       });
@@ -69,12 +69,12 @@ const AllProjects = () => {
           opacity: 1,
           y: 0,
           duration: 0.8,
-          delay: index * 0.2,
+          delay: index * 0.1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 90%",
-            end: "top 50%",
+            start: "top 95%",
+            end: "top 60%",
             toggleActions: "play none none reverse",
           },
         }

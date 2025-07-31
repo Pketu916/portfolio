@@ -14,7 +14,7 @@ const Benefits = () => {
         el,
         {
           opacity: 0,
-          y: 120,
+          y: 80,
           // scale: 0.95,
         },
         {
@@ -22,11 +22,12 @@ const Benefits = () => {
           y: 0,
           // scale: 1,
           duration: 0.8,
-          ease: "power4.in",
+          delay: i * 0.2,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
-            end: "top 50%",
+            start: "top 95%",
+            end: "top 70%",
             toggleActions: "play none none reverse",
           },
         }
