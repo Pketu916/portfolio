@@ -19,10 +19,10 @@ function Home() {
   useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
-      duration: 1.2,
+      duration: 1.5,
       gestureDirection: "vertical",
       smoothTouch: true,
-      wheelMultiplier: 0.4,
+      wheelMultiplier: 0.5,
       touchMultiplier: 0.1,
     });
 
