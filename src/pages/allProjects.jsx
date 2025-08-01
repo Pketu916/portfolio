@@ -76,6 +76,7 @@ const AllProjects = () => {
             start: "top 95%",
             end: "top 60%",
             toggleActions: "play none none reverse",
+            scrub:true,
           },
         }
       );

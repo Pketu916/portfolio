@@ -26,6 +26,7 @@ const Experience = () => {
             start: "top 85%",
             end: "top 50%",
             toggleActions: "play none none reverse",
+            scrub:true,
           },
         }
       );

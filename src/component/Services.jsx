@@ -24,6 +24,7 @@ const Services = () => {
             trigger: card,
             start: "top 90%",
             end: "top 60%",
+            scrub:true,
           },
           toggleActions: "play none none reverse",
         }

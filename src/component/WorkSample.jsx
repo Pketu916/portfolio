@@ -30,6 +30,7 @@ const WorkSample = () => {
             trigger: section,
             start: "top 85%",
             toggleActions: "play none none reverse",
+            scrub:true,
           },
         }
       );
