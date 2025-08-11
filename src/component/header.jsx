@@ -89,9 +89,7 @@ const Header = () => {
 
   return (
     <>
-      <header
-        className="sticky top-0 w-full z-50 bg-black/90 backdrop-blur-md text-white px-[5vw] py-5 "
-      >
+      <header className="sticky top-0 w-full z-50 bg-black/90 backdrop-blur-md text-white px-[5vw] py-5 ">
         {/* Logo */}
         <div className="container">
           <div className="flex justify-between items-center">
@@ -120,12 +118,19 @@ const Header = () => {
                   <span
                     key={item.name}
                     onClick={() => handleNavClick(item)}
-                    className={`relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
-  after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 
-  after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
-  ${isActive ? "text-cyan-400 after:w-full" : ""}`}
+                    className={
+                      item.name === "Projects"
+                        ? "p-2 rounded-full bg-gradient-to-r  text-white font-semibold shadow-lg hover:scale-110 transition-transform duration-300 cursor-pointer relative overflow-hidden group"
+                        : `p-2 relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
+         after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
+         after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
+         ${isActive ? "text-cyan-400 after:w-full" : ""}`
+                    }
                   >
                     {item.name}
+                    {item.name === "Projects" && (
+                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 translate-x-[-100%] animate-[shimmer_1.5s_infinite]"></span>
+                    )}
                   </span>
                 );
               })}
@@ -206,16 +211,23 @@ const Header = () => {
                 location.state?.scrollToId === item.scrollId);
 
             return (
-              <span
-                key={item.name}
-                onClick={() => handleNavClick(item)}
-                className={`relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
-  after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
-  after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
-  ${isActive ? "text-cyan-400 after:w-full" : ""}`}
-              >
-                {item.name}
-              </span>
+               <span
+                    key={item.name}
+                    onClick={() => handleNavClick(item)}
+                    className={
+                      item.name === "Projects"
+                        ? "p-2 rounded-full bg-gradient-to-r  text-white font-semibold shadow-lg hover:scale-110 transition-transform duration-300 cursor-pointer relative overflow-hidden group"
+                        : `p-2 relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
+         after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
+         after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
+         ${isActive ? "text-cyan-400 after:w-full" : ""}`
+                    }
+                  >
+                    {item.name}
+                    {item.name === "Projects" && (
+                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 translate-x-[-100%] animate-[shimmer_1.5s_infinite]"></span>
+                    )}
+                  </span>
             );
           })}
         </nav>

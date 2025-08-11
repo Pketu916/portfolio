@@ -13,11 +13,12 @@ import img12 from "../assets/img12.png";
 import img13 from "../assets/img13.jpg";
 import img14 from "../assets/img14.png";
 import img15 from "../assets/img15.png";
+import img16 from "../assets/img16.png";
 import mockup from "../assets/mockup.webp";
-import img0 from "../assets/hero-bg.jpg"
+import img0 from "../assets/hero-bg.jpg";
 
 const projectData = [
-    {
+  {
     id: "0",
     name: "My portfolio",
     description: "Developed a my portfolio website",
@@ -28,7 +29,7 @@ const projectData = [
       "MongoDB",
       "JavaScript",
       "Tailwind CSS",
-      "gsap"
+      "gsap",
     ],
     github: "https://github.com/Pketu916/portfolio",
     liveDemo: "https://portfolio-liart-ten-31.vercel.app/",
@@ -92,7 +93,7 @@ const projectData = [
     technologies: ["Webflow", "HTML", "CSS", "javascript"],
     github: null,
     liveDemo: "https://ketus-trendy-site.webflow.io/",
-    imageUrl: img6, 
+    imageUrl: img6,
   },
   {
     id: "7",
@@ -102,7 +103,7 @@ const projectData = [
     technologies: ["Webflow", "HTML", "CSS", "javascript"],
     github: null,
     liveDemo: "https://ketus-kevin-portfolio-6bca6f.webflow.io/",
-    imageUrl: img7, 
+    imageUrl: img7,
   },
   {
     id: "8",
@@ -195,7 +196,7 @@ const projectData = [
     liveDemo: "https://apps-row-weld.vercel.app/",
     imageUrl: img14,
   },
-    {
+  {
     id: "15",
     name: "Mijn Vergunning",
     description:
@@ -203,9 +204,25 @@ const projectData = [
     technologies: ["Webflow", "HTML", "CSS", "javascript"],
     github: null,
     liveDemo: "https://ketus-stunning-site.webflow.io/",
-    imageUrl: img15, 
+    imageUrl: img15,
   },
-
+  {
+    id: "16",
+    name: "blog website",
+    description:
+      "MERN blog app where users sign up, log in, and manage blogs with full CRUD. Built with MongoDB, Express, React, and Node for a smooth experience.",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JavaScript",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/Pketu916/blog-website",
+    liveDemo: null,
+    imageUrl: img16,
+  },
 ];
 
 export default projectData;
