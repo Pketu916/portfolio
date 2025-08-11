@@ -100,7 +100,7 @@ const projectData = [
     name: "Kevin Portfolio",
     description:
       "Portfolio website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
-    technologies: ["Webflow", "HTML", "CSS", "javascript"],
+    technologies: ["Webflow", "HTML", "CSS", "javascript","gsap"],
     github: null,
     liveDemo: "https://ketus-kevin-portfolio-6bca6f.webflow.io/",
     imageUrl: img7,
@@ -201,7 +201,7 @@ const projectData = [
     name: "Mijn Vergunning",
     description:
       "Website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
-    technologies: ["Webflow", "HTML", "CSS", "javascript"],
+    technologies: ["Webflow", "HTML", "CSS", "javascript","gsap"],
     github: null,
     liveDemo: "https://ketus-stunning-site.webflow.io/",
     imageUrl: img15,
