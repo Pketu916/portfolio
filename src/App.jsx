@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 
 import "./App.css";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
       </Routes>
            <Analytics />
+           <SpeedInsights />
     </Router>
   );
 }
