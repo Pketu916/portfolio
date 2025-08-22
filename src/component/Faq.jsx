@@ -115,7 +115,7 @@ const Faq = () => {
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="border-none w-full flex justify-between items-center px-6 py-4 text-left text-lg font-semibold bg-[#101820] hover:bg-[#13202c] transition-colors "
+                className="border-none rounded-none w-full flex justify-between items-center px-6 py-4 text-left text-lg font-semibold bg-[#101820] hover:bg-[#13202c] transition-colors "
               >
                 <span>{faq.question}</span>
                 <span className="text-xl">
