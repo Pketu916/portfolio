@@ -14,10 +14,29 @@ import img13 from "../assets/img13.jpg";
 import img14 from "../assets/img14.png";
 import img15 from "../assets/img15.png";
 import img16 from "../assets/img16.png";
+import img17 from "../assets/img17.png";
 import mockup from "../assets/mockup.webp";
 import img0 from "../assets/hero-bg.jpg";
 
 const projectData = [
+  {
+    id: "17",
+    name: "Work Technologies",
+    description:
+      "A full-stack MERN-based client website developed for a service-based company. The platform showcases various services, with a responsive UI and dynamic content management. Users can explore offerings, and the admin can manage content through full CRUD functionality.",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JavaScript",
+      "Tailwind CSS",
+    ],
+    github:
+      "https://github.com/Pketu916/work-technology/tree/main/work%20technology",
+    liveDemo: "https://work-technology-beta.vercel.app/",
+    imageUrl: img17,
+  },
   {
     id: "0",
     name: "My portfolio",
@@ -35,6 +54,7 @@ const projectData = [
     liveDemo: "https://portfolio-liart-ten-31.vercel.app/",
     imageUrl: img0,
   },
+
   {
     id: "1",
     name: "Coza Store",
@@ -100,7 +120,7 @@ const projectData = [
     name: "Kevin Portfolio",
     description:
       "Portfolio website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
-    technologies: ["Webflow", "HTML", "CSS", "javascript","gsap"],
+    technologies: ["Webflow", "HTML", "CSS", "javascript", "gsap"],
     github: null,
     liveDemo: "https://ketus-kevin-portfolio-6bca6f.webflow.io/",
     imageUrl: img7,
@@ -201,7 +221,7 @@ const projectData = [
     name: "Mijn Vergunning",
     description:
       "Website built with Webflow featuring smooth animations, clean layout, and responsive sections to showcase creative work.",
-    technologies: ["Webflow", "HTML", "CSS", "javascript","gsap"],
+    technologies: ["Webflow", "HTML", "CSS", "javascript", "gsap"],
     github: null,
     liveDemo: "https://ketus-stunning-site.webflow.io/",
     imageUrl: img15,
