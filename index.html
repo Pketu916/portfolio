@@ -30,7 +30,7 @@
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
   <script>
-    const lenis = new Lenis({
+    window.lenis = new Lenis({
       // Value between 0 and 1
       // Default value: 0.1
       // The lower the value, the smoother the scroll
@@ -41,7 +41,7 @@
     });
 
     function raf(time) {
-      lenis.raf(time);
+      window.lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
