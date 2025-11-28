@@ -20,6 +20,17 @@ import img0 from "../assets/hero-bg.jpg";
 
 const projectData = [
   {
+    id: "18",
+    name: "buildbite v2",
+    description:
+      "Field management app for contractors with GSAP animations, featuring real-time job tracking, task management, and professional communication tools. Built with smooth animations and responsive design.",
+    technologies: ["gsap", "HTML", "CSS"],
+    github: null,
+    liveDemo: "https://apps-row-3ney.vercel.app/",
+    imageUrl: img14,
+    featured: true,
+  },
+  {
     id: "17",
     name: "Work Technologies",
     description:
@@ -36,11 +47,13 @@ const projectData = [
       "https://github.com/Pketu916/work-technology/tree/main/work%20technology",
     liveDemo: "https://work-technology-beta.vercel.app/",
     imageUrl: img17,
+    featured: true,
   },
   {
     id: "0",
     name: "My portfolio",
-    description: "Developed a my portfolio website",
+    description:
+      "Personal portfolio built with React, Tailwind CSS, and GSAP, featuring a custom marquee, project showcase, reusable layouts, and interactive contact form to highlight services and past work.",
     technologies: [
       "React.js",
       "Node.js",
@@ -53,6 +66,7 @@ const projectData = [
     github: "https://github.com/Pketu916/portfolio",
     liveDemo: "https://portfolio-liart-ten-31.vercel.app/",
     imageUrl: img0,
+    featured: true,
   },
 
   {
@@ -64,6 +78,7 @@ const projectData = [
     github: "https://github.com/Pketu916/appsRow/tree/main/everX",
     liveDemo: "https://apps-row-8dqs.vercel.app/",
     imageUrl: img1,
+    featured: true,
   },
   {
     id: "2",
@@ -74,6 +89,7 @@ const projectData = [
     github: "https://github.com/Pketu916/appsRow/tree/main/everX",
     liveDemo: "https://everx.vercel.app/",
     imageUrl: img2,
+    featured: true,
   },
   {
     id: "3",
@@ -190,6 +206,7 @@ const projectData = [
       "https://github.com/Pketu916/frontend-practice/tree/main/react-practice/view.com",
     liveDemo: null,
     imageUrl: img12,
+    featured: true,
   },
   {
     id: "13",
@@ -210,7 +227,8 @@ const projectData = [
   {
     id: "14",
     name: "buildbite",
-    description: "Developed a buildbite landing page",
+    description:
+      "Marketing landing page for a construction startup with bold hero sections, service highlights, testimonial sliders, and responsive layout optimized for conversions.",
     technologies: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Pketu916/appsRow/tree/main/buildbite",
     liveDemo: "https://apps-row-weld.vercel.app/",

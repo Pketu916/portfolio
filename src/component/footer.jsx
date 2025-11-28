@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaInstagram,
@@ -6,34 +6,9 @@ import {
   FaEnvelope,
   FaPaperPlane,
 } from "react-icons/fa";
-import { gsap } from "gsap";
 
 const Footer = () => {
-  const iconsRef = useRef([]);
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
-
-  useEffect(() => {
-    const listeners = iconsRef.current.map((icon) => {
-      if (!icon) return null;
-      const enter = () =>
-        gsap.to(icon, { scale: 1.3, color: "#00FFFF", duration: 0.3 });
-      const leave = () =>
-        gsap.to(icon, { scale: 1, color: "#AAAAAA", duration: 0.3 });
-
-      icon.addEventListener("mouseenter", enter);
-      icon.addEventListener("mouseleave", leave);
-      return { icon, enter, leave };
-    });
-
-    return () => {
-      listeners.forEach((l) => {
-        if (l?.icon) {
-          l.icon.removeEventListener("mouseenter", l.enter);
-          l.icon.removeEventListener("mouseleave", l.leave);
-        }
-      });
-    };
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,35 +44,39 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bg-gradient-to-t from-black via-[#0b0b0b] to-black text-white px-[5vw] py-8 md:py-24z"
+      className="bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] text-white px-[5vw] py-8 md:py-16 backdrop-blur-sm relative overflow-hidden"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%)",
+      }}
     >
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {/* Branding Section */}
           <div>
-            <h2 className="text-4xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse mb-4">
               Ketu Patel
             </h2>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed">
               Web designer & front-end developer focused on building modern,
               interactive, and performance-optimized user experiences using
               React.js, Tailwind CSS, and animation tools.
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               📍 Based in Ahmedabad, India
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="flex flex-col flex-wrap md:content-center content-start">
-            <h3 className="text-2xl font-semibold text-cyan-400 mb-6">
+            <h3 className="text-2xl font-semibold text-primary mb-6">
               Quick Links
             </h3>
             <ul className="text-gray-300 space-y-3 text-lg">
               <li>
                 <Link
                   to="/"
-                  className="hover:text-white transition-all duration-300"
+                  className="hover:text-primary transition-all duration-300"
                 >
                   Home
                 </Link>
@@ -105,7 +84,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/projects"
-                  className="hover:text-white transition-all duration-300"
+                  className="hover:text-primary transition-all duration-300"
                 >
                   Projects
                 </Link>
@@ -113,7 +92,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-white transition-all duration-300"
+                  className="hover:text-primary transition-all duration-300"
                 >
                   About
                 </Link>
@@ -121,7 +100,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/services"
-                  className="hover:text-white transition-all duration-300"
+                  className="hover:text-primary transition-all duration-300"
                 >
                   Services
                 </Link>
@@ -131,10 +110,10 @@ const Footer = () => {
 
           {/* Contact Form */}
           <div>
-            <h3 className="text-2xl font-semibold text-cyan-400 mb-6">
+            <h3 className="text-2xl font-semibold text-primary mb-6">
               Contact Me
             </h3>
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-300 mb-6">
               Fill out the form below to send me a message. I'll respond as soon
               as I can.
             </p>
@@ -145,28 +124,28 @@ const Footer = () => {
                 name="name"
                 required
                 placeholder="Your Name"
-                className="w-full bg-[#111] border border-gray-700 focus:border-cyan-500 text-white px-4 py-3 rounded-lg outline-none transition-all"
+                className="w-full bg-white/5 border border-white/10 focus:border-primary text-white placeholder-gray-400 px-4 py-3 rounded-lg outline-none transition-all"
               />
               <input
                 type="email"
                 name="email"
                 required
                 placeholder="Your Email"
-                className="w-full bg-[#111] border border-gray-700 focus:border-cyan-500 text-white px-4 py-3 rounded-lg outline-none transition-all"
+                className="w-full bg-white/5 border border-white/10 focus:border-primary text-white placeholder-gray-400 px-4 py-3 rounded-lg outline-none transition-all"
               />
               <textarea
                 name="message"
                 required
                 placeholder="Your Message"
-                className="w-full bg-[#111] border border-gray-700 focus:border-cyan-500 text-white px-4 py-3 rounded-lg outline-none h-20 resize-none"
+                className="w-full bg-white/5 border border-white/10 focus:border-primary text-white placeholder-gray-400 px-4 py-3 rounded-lg outline-none h-20 resize-none"
               ></textarea>
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className={`inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 
-                hover:from-cyan-600 hover:to-blue-700 px-6 py-2 rounded-full text-white text-sm font-semibold 
-                transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 border border-cyan-400
+                className={`inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent 
+                hover:from-primary-dark hover:to-accent-dark px-6 py-2 rounded-full text-white text-sm font-semibold 
+                transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 border border-primary
                 ${status === "sending" ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 {status === "sending" ? "Sending..." : "Send Message"}
@@ -188,34 +167,28 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-20 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex gap-6 text-gray-400 text-xl">
+        <div className="mt-20 border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex gap-6 text-gray-300 text-xl">
             <a
               href="https://www.instagram.com/k2__patel_/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaInstagram
-                ref={(el) => (iconsRef.current[0] = el)}
-                className="cursor-pointer hover:text-pink-500 transition"
-              />
+              <FaInstagram className="cursor-pointer hover:text-accent transition" />
             </a>
             <a
               href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaLinkedinIn
-                ref={(el) => (iconsRef.current[1] = el)}
-                className="cursor-pointer hover:text-blue-500 transition"
-              />
+              <FaLinkedinIn className="cursor-pointer hover:text-primary transition" />
             </a>
             <a href="mailto:pketu916@gmail.com">
-              <FaEnvelope className="cursor-pointer hover:text-cyan-500 transition" />
+              <FaEnvelope className="cursor-pointer hover:text-primary transition" />
             </a>
           </div>
 
-          <p className="text-sm text-gray-500 text-center md:text-right">
+          <p className="text-sm text-gray-400 text-center md:text-right">
             © {new Date().getFullYear()} Ketu Patel. All rights reserved.
           </p>
         </div>

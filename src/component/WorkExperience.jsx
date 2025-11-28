@@ -1,47 +1,19 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 import experienceData from "../../experienceData.js"; // Adjust path accordingly
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Experience = () => {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const cards = gsap.utils.toArray(".exp-card");
-
-    cards.forEach((card,index) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 120 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.5,
-          ease: "power4.out",
-            delay: index * 0.1,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            end: "top 50%",
-            toggleActions: "play none none reverse",
-            scrub:true,
-          },
-        }
-      );
-    });
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="experience"
-      className="relative w-full bg-black text-white  px-[5vw] py-8 md:py-24"
+      className="relative w-full bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] text-white px-[5vw] py-8 md:py-24 backdrop-blur-sm overflow-hidden"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%)",
+      }}
     >
       <div className="container">
         <div className="flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-cyan-400 gap-8 mb-8 md:mb-16 text-center">
+          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse gap-8 mb-8 md:mb-16 text-center">
             My Experience
           </h2>
 
@@ -49,22 +21,17 @@ const Experience = () => {
             {experienceData.map((exp, index) => (
               <div
                 key={index}
-                className="exp-card bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 p-6 rounded-xl shadow-lg border border-white/10 backdrop-blur-md transform transition-all hover:scale-105 hover:shadow-cyan-500/30 hover:border-cyan-400/50 group"
+                className="exp-card bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 p-6 rounded-xl shadow-lg border border-white/10 backdrop-blur-md transform transition-all hover:scale-105 hover:shadow-primary/30 hover:border-primary/50 group"
               >
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">
                   {exp.company}
                 </h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-300 mb-4">
                   {exp.role} | {exp.duration}
                 </p>
                 <ul className="list-disc list-inside text-gray-300 space-y-1">
                   {exp.responsibilities.map((item, i) => (
-                    <li
-                      key={i}
-                      className="group-hover:text-white transition-colors"
-                    >
-                      {item}
-                    </li>
+                    <li key={i}>{item}</li>
                   ))}
                 </ul>
               </div>

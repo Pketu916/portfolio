@@ -118,43 +118,46 @@ const Skills = () => {
   ];
 
   return (
-   <section
-  id="toolbox"
-  className="bg-black flex flex-col items-center relative overflow-hidden py-12 md:py-24 px-4 sm:px-6 lg:px-12"
->
-  <h2 className="text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse mb-12">
-    My Toolbox
-  </h2>
+    <section
+      id="toolbox"
+      className="bg-gradient-to-br from-[#111] via-[#1a1a1a] to-[#111] flex flex-col items-center relative overflow-hidden py-12 md:py-24 px-4 sm:px-6 lg:px-12 backdrop-blur-sm"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 80% 50%, rgba(34, 211, 238, 0.08) 0%, transparent 50%)",
+      }}
+    >
+      <h2 className="text-center text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse mb-12">
+        My Toolbox
+      </h2>
 
-  <div
-    ref={gridRef}
-    className="grid grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-[650px]"
-  >
-    {toolboxItems.map(([label, icon], i) => (
       <div
-        key={i}
-        className="tool-card bg-white rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.1)] flex flex-col items-center justify-center p-3 transition-all hover:scale-105"
+        ref={gridRef}
+        className="grid grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-[650px]"
       >
-        <img
-          src={icon}
-          alt={label}
-          className="w-1/2 sm:w-2/3 pointer-events-none"
-        />
-        <span className="text-xs sm:text-sm md:text-base font-semibold text-center text-black mt-3">
-          {label}
-        </span>
+        {toolboxItems.map(([label, icon], i) => (
+          <div
+            key={i}
+            className="tool-card bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl shadow-[0_0_15px_rgba(34,211,238,0.2)] flex flex-col items-center justify-center p-3 transition-all hover:scale-105 hover:bg-white/15"
+          >
+            <img
+              src={icon}
+              alt={label}
+              className="w-1/2 sm:w-2/3 pointer-events-none"
+            />
+            <span className="text-xs sm:text-sm md:text-base font-semibold text-center text-white mt-3">
+              {label}
+            </span>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
 
-  <div
-    ref={controllerRef}
-    className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-cyan-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 cursor-grab shadow-xl flex items-center justify-center text-white font-bold text-sm md:text-base select-none"
-  >
-    Drag
-  </div>
-</section>
-
+      <div
+        ref={controllerRef}
+        className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 cursor-grab shadow-xl flex items-center justify-center text-white font-bold text-sm md:text-base select-none"
+      >
+        Drag
+      </div>
+    </section>
   );
 };
 

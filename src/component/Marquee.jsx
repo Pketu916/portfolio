@@ -180,14 +180,14 @@ const Marquee = () => {
   return (
     <div
       ref={containerRef}
-      className="overflow-hidden whitespace-nowrap py-4 sm:py-5 md:py-6 bg-gradient-to-b from-cyan-400 to-blue-800 backdrop-blur-sm"
+      className="overflow-hidden whitespace-nowrap py-4 sm:py-5 md:py-6 bg-gradient-to-b from-primary to-accent backdrop-blur-sm"
     >
       <div className="flex gap-10 sm:gap-14 md:gap-20 w-max px-6 sm:px-10">
         {items.map((text, index) => (
           <div
             key={index}
             ref={(el) => (itemRefs.current[index] = el)}
-            className="project-name text-base sm:text-xl md:text-2xl font-semibold tracking-widest text-white whitespace-nowrap"
+            className="project-name text-base sm:text-xl md:text-2xl font-normal tracking-widest text-white whitespace-nowrap"
           >
             {text}
           </div>

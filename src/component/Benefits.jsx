@@ -1,41 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 const Benefits = () => {
-  const benefitRefs = useRef([]);
-
-  useEffect(() => {
-    benefitRefs.current.forEach((el, i) => {
-      if (!el) return;
-      gsap.fromTo(
-        el,
-        {
-          opacity: 0,
-          y: 80,
-          // scale: 0.95,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          // scale: 1,
-          duration: 0.8,
-          delay: i * 0.1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 95%",
-            end: "top 70%",
-            toggleActions: "play none none reverse",
-            scrub:true,
-          },
-        }
-      );
-    });
-  }, []);
-
   const benefits = [
     {
       title: "Fast Performance",
@@ -71,28 +36,20 @@ const Benefits = () => {
 
   return (
     <section
-      className="relative bg-gradient-to-b from-black via-gray-900 to-black text-white py-8 md:py-24 px-[5vw] overflow-hidden "
+      className="relative bg-gradient-to-br from-[#111] via-[#1a1a1a] to-[#111] text-white py-8 md:py-24 px-[5vw] overflow-hidden backdrop-blur-sm"
       id="benefits"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 50% 20%, rgba(249, 115, 22, 0.08) 0%, transparent 50%)",
+      }}
     >
       <div className="container">
-        {/* Top Wavy SVG */}
-        {/* <svg
-        className="absolute top-0 left-0 w-full h-32 md:h-48 text-gray-900 -translate-y-1"
-        preserveAspectRatio="none"
-        viewBox="0 0 1440 320"
-      >
-        <path
-          fill="currentColor"
-          d="M0,32L80,42.7C160,53,320,75,480,90.7C640,107,800,117,960,112C1120,107,1280,85,1360,74.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
-        ></path>
-      </svg> */}
-
         {/* Title */}
         <div className="text-center mb-8 md:mb-16 relative z-10">
-          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse">
+          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse">
             Why Choose Me?
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mt-4">
+          <p className="text-gray-300 max-w-2xl mx-auto mt-4">
             Explore the key benefits that make my development approach
             efficient, innovative, and future-proof.
           </p>
@@ -103,15 +60,12 @@ const Benefits = () => {
           {benefits.map((item, index) => (
             <div
               key={index}
-              ref={(el) => (benefitRefs.current[index] = el)}
-              className="backdrop-blur-sm bg-white/5 border border-gray-700 hover:border-cyan-500 rounded-2xl p-6 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group cursor-pointer"
+              className="backdrop-blur-sm bg-white/5 border border-white/10 hover:border-primary/50 rounded-2xl p-6 shadow-lg hover:shadow-primary/20 transition-all duration-300 group cursor-pointer"
             >
-              <h3 className="text-xl font-bold mb-3 text-cyan-400 group-hover:text-white transition">
+              <h3 className="text-xl font-bold mb-3 text-primary">
                 {item.title}
               </h3>
-              <p className="text-gray-400 group-hover:text-gray-200 transition">
-                {item.description}
-              </p>
+              <p className="text-gray-300">{item.description}</p>
             </div>
           ))}
         </div>

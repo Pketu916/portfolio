@@ -1,23 +1,25 @@
 import React from "react";
-import Header from "../component/header";
-import Footer from "../component/footer";
+import PageLayout from "../component/PageLayout";
+import HeroSection from "../component/HeroSection";
 import Experience from "../component/WorkExperience";
 import Skills from "../component/skills";
-import CustomCursor from "../component/CustomCursor";
 import Benefits from "../component/Benefits";
 import Marquee from "../component/Marquee";
 
 export const About = () => {
   return (
-    <>
-      <Header />
+    <PageLayout isDark={true}>
+      <HeroSection
+        title="About Me"
+        subtitle="Get to know more about my experience, skills, and what drives me as a developer."
+        isDark={true}
+        height="60vh"
+      />
       <Experience />
       <Skills />
       <Marquee />
       <Benefits />
-      <Footer />
-      <CustomCursor />
-    </>
+    </PageLayout>
   );
 };
 export default About;

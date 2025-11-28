@@ -1,14 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+import { useState, useRef, useEffect } from "react";
 import { FaInstagram, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import lenis from "../hooks/lenis";
+import gsap from "gsap";
 
-const Header = () => {
-  const logoRef = useRef(null);
-  const patelRef = useRef(null);
-  const socialsRef = useRef([]);
+const Header = ({ isDark = true }) => {
   const menuRef = useRef(null);
+  const logoPatelRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,8 +24,11 @@ const Header = () => {
 
     if (item.scrollId) {
       const el = document.getElementById(item.scrollId);
-      if (el) lenis.scrollTo(el);
-      else navigate("/", { state: { scrollToId: item.scrollId } });
+      if (el) {
+        el.scrollIntoView();
+      } else {
+        navigate("/", { state: { scrollToId: item.scrollId } });
+      }
     } else {
       navigate(item.path);
     }
@@ -36,11 +36,6 @@ const Header = () => {
 
   const closeMobileMenu = () => {
     if (menuRef.current.classList.contains("translate-x-0")) {
-      gsap.to(menuRef.current, {
-        x: "100%",
-        duration: 0.5,
-        ease: "power2.inOut",
-      });
       menuRef.current.classList.remove("translate-x-0");
       setMenuOpen(false);
     }
@@ -48,59 +43,109 @@ const Header = () => {
 
   const handleMenuToggle = () => {
     const isOpen = menuRef.current.classList.contains("translate-x-0");
-
-    gsap.to(menuRef.current, {
-      x: isOpen ? "100%" : "0%",
-      duration: 0.5,
-      ease: "power2.inOut",
-    });
-
     menuRef.current.classList.toggle("translate-x-0");
     setMenuOpen(!isOpen);
   };
 
+  // GSAP Logo Animation - Elegant Wave Effect
   useEffect(() => {
-    gsap.to(logoRef.current, {
-      scale: 1.05,
-      repeat: -1,
-      yoyo: true,
-      duration: 2,
-      ease: "sine.inOut",
+    if (!logoPatelRef.current) return;
+
+    const element = logoPatelRef.current;
+    const text = element.textContent;
+    const letters = text.split("");
+
+    // Wrap each letter in a span for individual animation with gradient
+    element.innerHTML = letters
+      .map(
+        (letter, index) =>
+          `<span class="logo-letter" style="display: inline-block; position: relative; background: linear-gradient(90deg, rgb(34, 211, 238), rgb(251, 146, 60), rgb(34, 211, 238)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">${
+            letter === " " ? "&nbsp;" : letter
+          }</span>`
+      )
+      .join("");
+
+    const letterElements = element.querySelectorAll(".logo-letter");
+
+    // Create a smooth wave animation
+    const waveTl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+    letterElements.forEach((letter, index) => {
+      gsap.set(letter, {
+        y: 0,
+        rotationX: 0,
+      });
+
+      // Subtle wave up animation
+      waveTl.to(
+        letter,
+        {
+          y: -6,
+          rotationX: 10,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        index * 0.08
+      );
     });
 
-    gsap.to(patelRef.current, {
-      rotateY: 360,
-      borderRadius: "50%",
-      duration: 3,
-      repeat: -1,
-      ease: "power1.inOut",
-      transformOrigin: "center",
+    // Wave down
+    letterElements.forEach((letter, index) => {
+      waveTl.to(
+        letter,
+        {
+          y: 0,
+          rotationX: 0,
+          duration: 0.4,
+          ease: "power2.in",
+        },
+        letters.length * 0.08 + index * 0.08
+      );
     });
 
-    socialsRef.current.forEach((icon) => {
-      const enter = () =>
-        gsap.to(icon, { scale: 1.3, color: "#00FFFF", duration: 0.3 });
-      const leave = () =>
-        gsap.to(icon, { scale: 1, color: "#AAAAAA", duration: 0.3 });
-      icon?.addEventListener("mouseenter", enter);
-      icon?.addEventListener("mouseleave", leave);
+    // Smooth gradient animation on each letter
+    letterElements.forEach((letter) => {
+      gsap.to(letter, {
+        backgroundPosition: "200% center",
+        duration: 5,
+        ease: "none",
+        repeat: -1,
+      });
     });
   }, []);
 
   return (
     <>
-      <header className="sticky top-0 w-full z-50 bg-black/90 backdrop-blur-md text-white px-[5vw] py-5 ">
+      <header
+        className={`sticky top-0 w-full z-50 backdrop-blur-md px-[5vw] py-5 ${
+          isDark
+            ? "bg-black/90 text-white"
+            : "bg-white/90 text-gray-900 border-b border-gray-200"
+        }`}
+      >
         {/* Logo */}
         <div className="container">
           <div className="flex justify-between items-center">
-            <div
-              ref={logoRef}
-              className="flex items-center gap-2 cursor-pointer select-none"
-            >
+            <div className="flex items-center gap-2 cursor-pointer select-none group">
               <Link to="/" className="flex items-center gap-2">
-                <span className="text-xl font-bold">Ketu</span>
-                <span ref={patelRef} className="text-cyan-400 font-bold">
-                  Patel
+                <span className="text-xl font-bold transition-all duration-300 group-hover:scale-105 group-hover:text-primary">
+                  Ketu
+                </span>
+                <span className="text-primary font-bold relative">
+                  <span
+                    ref={logoPatelRef}
+                    className="inline-block text-xl font-bold"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, rgb(34, 211, 238), rgb(251, 146, 60), rgb(34, 211, 238))",
+                      backgroundSize: "200% auto",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    Patel
+                  </span>
                 </span>
               </Link>
             </div>
@@ -120,17 +165,19 @@ const Header = () => {
                     onClick={() => handleNavClick(item)}
                     className={
                       item.name === "Projects"
-                        ? "p-2 rounded-full bg-gradient-to-r  text-white font-semibold shadow-lg hover:scale-110 transition-transform duration-300 cursor-pointer relative overflow-hidden group"
-                        : `p-2 relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
+                        ? `px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary/15 via-primary/20 to-primary/15 text-primary font-medium cursor-pointer transition-all duration-300 hover:from-primary/25 hover:via-primary/30 hover:to-primary/25 hover:shadow-lg hover:shadow-primary/30 relative overflow-hidden group`
+                        : `p-2 relative cursor-pointer transition-colors duration-300 ${
+                            isDark ? "text-white" : "text-gray-900"
+                          } hover:text-primary
          after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
-         after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
-         ${isActive ? "text-cyan-400 after:w-full" : ""}`
+         after:bg-primary after:transition-all after:duration-500 hover:after:w-full
+         ${isActive ? "text-primary after:w-full" : ""}`
                     }
                   >
-                    {item.name}
                     {item.name === "Projects" && (
-                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 translate-x-[-100%] animate-[shimmer_1.5s_infinite]"></span>
+                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
                     )}
+                    {item.name}
                   </span>
                 );
               })}
@@ -143,30 +190,21 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaEnvelope
-                  ref={(el) => (socialsRef.current[2] = el)}
-                  className="cursor-pointer"
-                />
+                <FaEnvelope className="cursor-pointer hover:text-primary transition" />
               </a>
               <a
                 href="https://www.instagram.com/k2__patel_/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram
-                  ref={(el) => (socialsRef.current[0] = el)}
-                  className="cursor-pointer"
-                />
+                <FaInstagram className="cursor-pointer hover:text-accent transition" />
               </a>
               <a
                 href="https://www.linkedin.com/in/ketu-patel-b9a104232/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaLinkedinIn
-                  ref={(el) => (socialsRef.current[1] = el)}
-                  className="cursor-pointer"
-                />
+                <FaLinkedinIn className="cursor-pointer hover:text-primary transition" />
               </a>
             </div>
 
@@ -200,7 +238,9 @@ const Header = () => {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 w-full h-screen bg-black text-white z-40 flex flex-col justify-center items-center text-3xl gap-6 translate-x-full"
+        className={`fixed top-0 right-0 w-full h-screen z-40 flex flex-col justify-center items-center text-3xl gap-6 translate-x-full ${
+          isDark ? "bg-black text-white" : "bg-white text-gray-900"
+        }`}
       >
         <nav className="flex flex-col items-center gap-6 text-lg uppercase">
           {navLinks.map((item) => {
@@ -211,23 +251,23 @@ const Header = () => {
                 location.state?.scrollToId === item.scrollId);
 
             return (
-               <span
-                    key={item.name}
-                    onClick={() => handleNavClick(item)}
-                    className={
-                      item.name === "Projects"
-                        ? "p-2 rounded-full bg-gradient-to-r  text-white font-semibold shadow-lg hover:scale-110 transition-transform duration-300 cursor-pointer relative overflow-hidden group"
-                        : `p-2 relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
+              <span
+                key={item.name}
+                onClick={() => handleNavClick(item)}
+                className={
+                  item.name === "Projects"
+                    ? `px-4 py-2 rounded-lg bg-gradient-to-r from-primary/15 via-primary/20 to-primary/15 text-primary font-medium cursor-pointer transition-all duration-300 hover:from-primary/25 hover:via-primary/30 hover:to-primary/25 hover:shadow-lg hover:shadow-primary/30 relative overflow-hidden group`
+                    : `p-2 relative cursor-pointer transition-colors duration-300 text-white hover:text-cyan-400
          after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
          after:bg-cyan-400 after:transition-all after:duration-500 hover:after:w-full
          ${isActive ? "text-cyan-400 after:w-full" : ""}`
-                    }
-                  >
-                    {item.name}
-                    {item.name === "Projects" && (
-                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 translate-x-[-100%] animate-[shimmer_1.5s_infinite]"></span>
-                    )}
-                  </span>
+                }
+              >
+                {item.name === "Projects" && (
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
+                )}
+                {item.name}
+              </span>
             );
           })}
         </nav>

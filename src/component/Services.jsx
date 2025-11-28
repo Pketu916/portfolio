@@ -1,37 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 const Services = () => {
-  const cardsRef = useRef([]);
-
-  useEffect(() => {
-    cardsRef.current.forEach((card, index) => {
-      if (!card) return;
-
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 80 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: index * 0.1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 90%",
-            end: "top 60%",
-            scrub:true,
-          },
-          toggleActions: "play none none reverse",
-        }
-      );
-    });
-  }, []);
-
   const services = [
     {
       title: "Full Stack Web Applications",
@@ -58,8 +27,8 @@ const Services = () => {
       title: "UI/UX Design",
       description:
         "I design websites that are easy to use and look great. The goal is always a smooth user experience that feels good on both desktop and mobile.",
-      bg: "from-cyan-500 to-blue-600",
-      titleColor: "text-cyan-100",
+      bg: "from-primary to-accent",
+      titleColor: "text-white",
     },
     {
       title: "Performance & SEO Optimization",
@@ -79,15 +48,19 @@ const Services = () => {
 
   return (
     <section
-      className="py-8 md:py-24 px-[5vw] bg-gradient-to-br from-[#0f0f0f] via-black to-[#0f0f0f] text-white"
+      className="py-8 md:py-24 px-[5vw] relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] text-white backdrop-blur-sm"
       id="services"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%)",
+      }}
     >
       <div className="container">
         <div className="text-center mb-8 md:mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-cyan-400">
+          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary text-3xl md:text-5xl font-extrabold tracking-wide uppercase drop-shadow-lg animate-pulse mb-4">
             My Services
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="max-w-2xl mx-auto text-base sm:text-lg text-gray-300">
             I craft full-stack experiences that blend design, performance, and
             modern development practices.
           </p>
@@ -97,7 +70,6 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
               className={`min-h-[220px] p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.03] transition-transform duration-300 ease-in-out bg-gradient-to-br ${service.bg} cursor-pointer`}
               style={{ transformStyle: "preserve-3d" }}
             >
