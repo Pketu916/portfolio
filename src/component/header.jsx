@@ -35,16 +35,28 @@ const Header = ({ isDark = true }) => {
   };
 
   const closeMobileMenu = () => {
-    if (menuRef.current.classList.contains("translate-x-0")) {
+    if (
+      menuRef.current &&
+      menuRef.current.classList.contains("translate-x-0")
+    ) {
       menuRef.current.classList.remove("translate-x-0");
+      menuRef.current.classList.add("translate-x-full");
       setMenuOpen(false);
     }
   };
 
   const handleMenuToggle = () => {
-    const isOpen = menuRef.current.classList.contains("translate-x-0");
-    menuRef.current.classList.toggle("translate-x-0");
-    setMenuOpen(!isOpen);
+    if (menuRef.current) {
+      const isOpen = menuRef.current.classList.contains("translate-x-0");
+      if (isOpen) {
+        menuRef.current.classList.remove("translate-x-0");
+        menuRef.current.classList.add("translate-x-full");
+      } else {
+        menuRef.current.classList.remove("translate-x-full");
+        menuRef.current.classList.add("translate-x-0");
+      }
+      setMenuOpen(!isOpen);
+    }
   };
 
   // GSAP Logo Animation - Elegant Wave Effect
